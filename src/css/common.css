@@ -1,0 +1,12 @@
+html,
+body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 100vh;
+}
+.wrapper {
+  margin-bottom: 2rem;
+}
