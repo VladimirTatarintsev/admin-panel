@@ -157,8 +157,8 @@ function App() {
       <div className="wrapper wrapper__checkbox-radio">
         <div className="checkbox-block">
           <div className="checkbox">
-            <input className="checkbox__item" type="checkbox" id="check-1" />
-            <label className="checkbox__label" for="check-1"></label>
+            <input className="checkbox__item" type="checkbox" id="check" />
+            <label className="checkbox__label" for="check"></label>
           </div>
           <div className="checkbox">
             <input
@@ -176,9 +176,9 @@ function App() {
               className="radio__item"
               type="radio"
               name="radio-button"
-              id="radio-1"
+              id="radio"
             />
-            <label className="radio__label" for="radio-1"></label>
+            <label className="radio__label" for="radio"></label>
           </div>
           <div className="radio">
             <input
@@ -461,9 +461,9 @@ function App() {
                 className="radio__item-none"
                 type="radio"
                 name="radio-btn"
-                id="new-1"
+                id="radio-new"
               />
-              <label className="radio__label-none" for="new-1">
+              <label className="radio__label-none" for="radio-new">
                 Новый
               </label>
             </div>
@@ -472,9 +472,9 @@ function App() {
                 className="radio__item-none"
                 type="radio"
                 name="radio-btn"
-                id="calc-1"
+                id="radio-calc"
               />
-              <label className="radio__label-none" for="calc-1">
+              <label className="radio__label-none" for="radio-calc">
                 Рассчет
               </label>
             </div>
@@ -483,10 +483,9 @@ function App() {
                 className="radio__item-none"
                 type="radio"
                 name="radio-btn"
-                id="confirmed-1"
-                checked
+                id="radio-confirmed"
               />
-              <label className="radio__label-none" for="confirmed-1">
+              <label className="radio__label-none" for="radio-confirmed">
                 Подтвержден
               </label>
             </div>
@@ -495,9 +494,9 @@ function App() {
                 className="radio__item-none"
                 type="radio"
                 name="radio-btn"
-                id="postponed-1"
+                id="radio-postponed"
               />
-              <label className="radio__label-none" for="postponed-1">
+              <label className="radio__label-none" for="radio-postponed">
                 Отложен
               </label>
             </div>
@@ -506,9 +505,9 @@ function App() {
                 className="radio__item-none"
                 type="radio"
                 name="radio-btn"
-                id="completed-1"
+                id="radio-completed"
               />
-              <label className="radio__label-none" for="completed-1">
+              <label className="radio__label-none" for="radio-completed">
                 Выполнен
               </label>
             </div>
@@ -517,9 +516,9 @@ function App() {
                 className="radio__item-none"
                 type="radio"
                 name="radio-btn"
-                id="canceled-1"
+                id="radio-canceled"
               />
-              <label className="radio__label-none" for="canceled-1">
+              <label className="radio__label-none" for="radio-canceled">
                 Отменен
               </label>
             </div>
@@ -543,16 +542,16 @@ function App() {
           </div>
           <div className="dropdown-block">
             <label className="button-label">Удалить n записей?</label>
-            <button className="button button_color_secondary button_size_medium dropdown-block__button">
+            <button className="button button_color_secondary button_size_medium button_full-width dropdown-block__button">
               <span className="button__text">Удалить</span>
             </button>
-            <button className="button button_color_primary button_size_medium dropdown-block__button">
+            <button className="button button_color_primary button_size_medium button_full-width dropdown-block__button">
               <span className="button__text">Отмена</span>
             </button>
           </div>
           <div className="dropdown-block">
             <label className="button-label">Выберите тему</label>
-            <button className="button button_color_secondary button_size_medium dropdown-block__button">
+            <button className="button button_color_secondary button_size_medium button_full-width dropdown-block__button">
               <svg
                 className="button__icon"
                 viewBox="0 0 16 16"
@@ -580,7 +579,7 @@ function App() {
               </svg>
               <span className="button__text">Светлая</span>
             </button>
-            <button className="button button_color_primary button_size_medium dropdown-block__button">
+            <button className="button button_color_primary button_size_medium button_full-width dropdown-block__button">
               <svg
                 className="button__icon"
                 viewBox="0 0 16 16"

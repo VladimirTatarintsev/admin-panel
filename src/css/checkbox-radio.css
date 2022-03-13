@@ -32,6 +32,8 @@ body {
   display: inline-flex;
   align-items: center;
   user-select: none;
+  width: 100%;
+  height: 100%;
 }
 .checkbox__item + .checkbox__label::before {
   content: "";
@@ -43,7 +45,6 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
-  margin-right: 0.5rem;
   box-sizing: border-box;
 }
 .checkbox__item:checked + .checkbox__label::before {

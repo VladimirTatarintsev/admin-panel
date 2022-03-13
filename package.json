@@ -52,7 +52,6 @@
   "bugs": {
     "url": "https://github.com/VladimirTatarintsev/admin-panel/issues"
   },
-  "homepage": "https://github.com/VladimirTatarintsev/admin-panel#readme",
   "lint-staged": {
     "*.{js,css,md}": "prettier --write"
   }
