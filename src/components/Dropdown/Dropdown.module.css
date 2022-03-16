@@ -7,7 +7,7 @@ body {
   width: 100%;
   font-family: "Ubuntu", sans-serif;
 }
-.wrapper__dropdown {
+.wrapper {
   width: 42rem;
   height: 32rem;
   border: 1px dashed #8055ff;

@@ -7,9 +7,8 @@ body {
 .wrapper {
   margin-right: 3rem;
 }
-.Components {
+.components {
   padding-top: 5rem;
-  width: 60%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
