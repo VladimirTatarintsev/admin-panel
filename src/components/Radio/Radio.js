@@ -1,25 +1,39 @@
-import style from "./Radio.module.css";
+import styles from "./Radio.module.css";
 
-export const Radio = () => (
-  <div className={style.radioBlock}>
-    <div className={style.radio}>
+export const Radio = () => {
+  return (
+    <div className={styles.radio}>
       <input
-        className={style.radio__item}
+        className={styles.Input}
         type="radio"
         name="radio-button"
         id="radio"
       />
-      <label className={style.radio__label} for="radio"></label>
+      <label className={styles.Label} for="radio"></label>
     </div>
-    <div className={style.radio}>
+  );
+};
+
+export const RadioChecked = () => {
+  return (
+    <div className={styles.radio}>
       <input
-        className={style.radio__item}
+        className={styles.Input}
         checked
         type="radio"
         name="radio-button"
         id="radio-2"
       />
-      <label className={style.radio__label} for="radio-2"></label>
+      <label className={styles.Label} for="radio-2"></label>
     </div>
-  </div>
-);
+  );
+};
+
+export const RadioBlock = () => {
+  return (
+    <div className={styles.radioBlock}>
+      <Radio />
+      <RadioChecked />
+    </div>
+  );
+};

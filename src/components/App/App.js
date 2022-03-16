@@ -1,20 +1,30 @@
 import { ButtonTable } from "../Button/Button";
-import { Checkbox } from "../Checkbox/Checkbox";
-import { Radio } from "../Radio/Radio";
-import { Dropdown } from "../Dropdown/Dropdown";
-import { InputWrapper } from "../Input/Input";
-import { SearchBarWrapper } from "../Search-bar/Search-bar";
+import { CheckboxBlock } from "../Checkbox/Checkbox";
+import { RadioBlock } from "../Radio/Radio";
+import { DropdownSection } from "../Dropdown/Dropdown";
+import { InputForm } from "../Input/Input";
+import { SearchBar } from "../Search-bar/Search-bar";
 import style from "./App.module.css";
 
-const App = () => (
-  <div className={style.components}>
-    <InputWrapper />
-    <SearchBarWrapper />
-    <Checkbox />
-    <Radio />
-    <ButtonTable />
-    <Dropdown />
-  </div>
-);
-
-export default App;
+export const App = () => {
+  return (
+    <div className={style.components}>
+      <div className={style.wrapper}>
+        <InputForm />
+      </div>
+      <div className={style.wrapper}>
+        <SearchBar />
+      </div>
+      <div className={style.wrapper}>
+        <CheckboxBlock />
+        <RadioBlock />
+      </div>
+      <div className={style.wrapper}>
+        <ButtonTable />
+      </div>
+      <div className={style.wrapper}>
+        <DropdownSection />
+      </div>
+    </div>
+  );
+};

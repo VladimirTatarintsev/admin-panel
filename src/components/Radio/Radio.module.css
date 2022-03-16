@@ -5,25 +5,25 @@
   box-sizing: border-box;
   border-radius: 5px;
   display: flex;
-  align-items: center;
+  align-inputs: center;
   justify-content: space-evenly;
 }
 .radio {
   display: flex;
-  align-items: center;
+  align-inputs: center;
   justify-content: center;
 }
-.radio__item {
+.Input {
   z-index: -1;
   opacity: 0;
   position: absolute;
 }
-.radio__item + .radio__label {
+.Input + .Label {
   display: inline-flex;
   align-items: center;
   user-select: none;
 }
-.radio__item + .radio__label::before {
+.Input + .Label::before {
   content: "";
   display: inline-block;
   cursor: pointer;
@@ -35,11 +35,11 @@
   background-position: center;
   background-size: 110%;
 }
-.radio__item:checked + .radio__label::before {
+.Input:checked + .Label::before {
   border-color: #459df5;
   background-color: #459df5;
   background-image: url(../../icons/dot.svg);
 }
-.radio__item:checked + .radio__label {
+.Input:checked + .Label {
   color: #459df5;
 }
