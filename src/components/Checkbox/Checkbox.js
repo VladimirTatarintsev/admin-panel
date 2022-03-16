@@ -1,7 +1,7 @@
 import style from "./Checkbox.module.css";
 
 export const Checkbox = () => (
-  <div className="checkbox-block">
+  <div className={style.checkbox - block}>
     <div className="checkbox">
       <input className="checkbox__item" type="checkbox" id="check" />
       <label className="checkbox__label" for="check"></label>

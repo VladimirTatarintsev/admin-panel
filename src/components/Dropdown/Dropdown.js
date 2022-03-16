@@ -1,6 +1,4 @@
-import style from "./Dropdown.module.css";
-
-const Dropdown = () => (
+export const Dropdown = () => (
   <div className="wrapper wrapper__dropdown">
     <div className="dropdown-section dropdown-section__top">
       <div className="dropdown-block">
@@ -182,5 +180,3 @@ const Dropdown = () => (
     </div>
   </div>
 );
-
-export default Dropdown;

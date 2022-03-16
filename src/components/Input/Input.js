@@ -16,35 +16,34 @@ export const Input = () => (
   </div>
 );
 
-export const InputIncorrect = () => {
-  return (
-    <div className={style.input}>
-      <label className={style.input__label} for="inputIncorrect">
-        Дата и время заказа
-      </label>
-      <div className={style.input__area}>
-        <input
-          className={`${style.input__field} ${style.input__field_incorrect}`}
-          type="text"
-          id="inputIncorrect"
-          placeholder="Введите"
-          value="06.12.2021"
-        />
-        <button className={style.input__button}>
-          <svg
-            className={style.input__icon}
-            viewBox="0 0 16 16"
-            fill="none"
-            stroke="#BAD8F5"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M12.5 3.5L3.5 12.5M3.5 3.5L12.5 12.5" fill="none" />
-          </svg>
-        </button>
-      </div>
+export const InputIncorrect = () => (
+  <div className={style.input}>
+    <label className={style.input__label} for="inputIncorrect">
+      Дата и время заказа
+    </label>
+    <div className={style.input__area}>
+      <input
+        className={`${style.input__field} ${style.input__field_incorrect}`}
+        type="text"
+        id="inputIncorrect"
+        placeholder="Введите"
+        value="06.12.2021"
+      />
+      <button className={style.input__button}>
+        <svg
+          className={style.input__icon}
+          viewBox="0 0 16 16"
+          fill="none"
+          stroke="#BAD8F5"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M12.5 3.5L3.5 12.5M3.5 3.5L12.5 12.5" fill="none" />
+        </svg>
+      </button>
     </div>
-  );
-};
+  </div>
+);
+
 export const InputDisabled = () => (
   <div className={style.input}>
     <label className={style.input__label} for="inputDisabled">
