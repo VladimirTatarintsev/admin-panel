@@ -2,10 +2,6 @@ import cn from "classnames";
 import styles from "./Dropdown.module.css";
 import { Checkbox, CheckboxChecked } from "../Checkbox/Checkbox";
 import { Radio } from "../Radio/Radio";
-import {
-  buttonColorPrimaryMedium,
-  buttonColorSecondaryMedium,
-} from "../Button/Button";
 
 export const DropdownSection = () => {
   const DropdownCheckbox = cn({

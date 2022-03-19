@@ -1,14 +1,20 @@
 import styles from "./Input.module.css";
+import cn from "classnames";
+
+// export const InputClass = ({
+// 	invalid,
+// 	disabled
+// })
 
 export const Input = () => {
   return (
     <div className={styles.input}>
-      <label className={styles.inputLabel} for="inputEmpty">
+      <label className={styles.label} for="inputEmpty">
         Дата и время заказа
       </label>
-      <div className={styles.inputArea}>
+      <div className={styles.area}>
         <input
-          className={styles.inputField}
+          className={styles.field}
           type="text"
           id="inputEmpty"
           placeholder="Введите"
@@ -18,23 +24,30 @@ export const Input = () => {
   );
 };
 
-export const InputIncorrect = () => {
+export const InputIncorrect = (style, className, ...props) => {
+  const InputClass = cn({
+    [styles.field]: true,
+    [styles.fieldIncorrect]: style,
+    [className]: !!className,
+  });
+
   return (
     <div className={styles.input}>
-      <label className={styles.inputLabel} for="inputIncorrect">
+      <label className={styles.label} for="incorrect">
         Дата и время заказа
       </label>
-      <div className={styles.inputArea}>
+      <div className={styles.area}>
         <input
-          className={`${styles.inputField} ${styles.inputFieldIncorrect}`}
           type="text"
-          id="inputIncorrect"
+          id="incorrect"
           placeholder="Введите"
           value="06.12.2021"
+          className={InputClass}
+          {...props}
         />
-        <button className={styles.inputButton}>
+        <button className={styles.button}>
           <svg
-            className={styles.inputIcon}
+            className={styles.icon}
             viewBox="0 0 16 16"
             fill="none"
             stroke="#BAD8F5"
@@ -48,24 +61,30 @@ export const InputIncorrect = () => {
   );
 };
 
-export const InputDisabled = () => {
+export const InputDisabled = (disabled, className, ...props) => {
+  const InputClass = cn({
+    [styles.field]: true,
+    [styles.fieldDisabled]: disabled,
+    [className]: !!className,
+  });
   return (
     <div className={styles.input}>
-      <label className={styles.inputLabel} for="inputDisabled">
+      <label className={styles.label} for="inputDisabled">
         Дата и время заказа
       </label>
-      <div className={styles.inputArea}>
+      <div className={styles.area}>
         <input
           disabled
-          className={`${styles.inputField} ${styles.inputFieldDisabled}`}
+          className={InputClass}
+          {...props}
           type="text"
           id="inputDisabled"
           placeholder="Введите"
           value="06.12.2021"
         />
-        <div className={styles.inputIconArea}>
+        <div className={styles.iconArea}>
           <svg
-            className={styles.inputIcon}
+            className={styles.icon}
             viewBox="0 0 16 16"
             stroke="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -88,16 +107,16 @@ export const InputDisabled = () => {
 };
 export const InputForm = () => {
   return (
-    <div className={styles.inputForm}>
-      <div className={styles.inputFormContainer}>
+    <div className={styles.form}>
+      <div className={styles.formContainer}>
         <Input />
       </div>
 
-      <div className={styles.inputFormContainer}>
-        <InputIncorrect />
+      <div className={styles.formContainer}>
+        <InputIncorrect></InputIncorrect>
       </div>
 
-      <div className={styles.inputFormContainer}>
+      <div className={styles.formContainer}>
         <InputDisabled />
       </div>
     </div>

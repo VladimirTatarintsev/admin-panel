@@ -19,7 +19,6 @@ export const RadioChecked = () => {
     <div className={styles.radio}>
       <input
         className={styles.Input}
-        checked
         type="radio"
         name="radio-button"
         id="radio-2"

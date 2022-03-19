@@ -11,12 +11,7 @@ export const Checkbox = () => {
 export const CheckboxChecked = () => {
   return (
     <div className={styles.checkbox}>
-      <input
-        checked
-        className={styles.checkboxItem}
-        type="checkbox"
-        id="check-2"
-      />
+      <input className={styles.checkboxItem} type="checkbox" id="check-2" />
       <label className={styles.checkboxLabel} for="check-2"></label>
     </div>
   );
