@@ -14,7 +14,7 @@ export const Radio = () => {
   );
 };
 
-export const RadioChecked = () => {
+export const Radio2 = () => {
   return (
     <div className={styles.radio}>
       <input
@@ -32,7 +32,7 @@ export const RadioBlock = () => {
   return (
     <div className={styles.radioBlock}>
       <Radio />
-      <RadioChecked />
+      <Radio2 />
     </div>
   );
 };

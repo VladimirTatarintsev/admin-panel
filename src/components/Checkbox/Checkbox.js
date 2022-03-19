@@ -8,7 +8,7 @@ export const Checkbox = () => {
     </div>
   );
 };
-export const CheckboxChecked = () => {
+export const Checkbox2 = () => {
   return (
     <div className={styles.checkbox}>
       <input className={styles.checkboxItem} type="checkbox" id="check-2" />
@@ -20,7 +20,7 @@ export const CheckboxBlock = () => {
   return (
     <div className={styles.checkboxBlock}>
       <Checkbox />
-      <CheckboxChecked />
+      <Checkbox2 />
     </div>
   );
 };

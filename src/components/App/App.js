@@ -1,9 +1,11 @@
-import { ButtonTable } from "../Button/Button";
-import { CheckboxBlock } from "../Checkbox/Checkbox";
-import { RadioBlock } from "../Radio/Radio";
-import { DropdownSection } from "../Dropdown/Dropdown";
-import { InputForm } from "../Input/Input";
-import { SearchBar } from "../Search-bar/Search-bar";
+import {
+  InputForm,
+  SearchBar,
+  CheckboxBlock,
+  RadioBlock,
+  ButtonTable,
+  DropdownSection,
+} from "../../components/index";
 import style from "./App.module.css";
 
 export const App = () => {

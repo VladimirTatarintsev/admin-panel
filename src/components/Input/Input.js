@@ -1,11 +1,6 @@
 import styles from "./Input.module.css";
 import cn from "classnames";
 
-// export const InputClass = ({
-// 	invalid,
-// 	disabled
-// })
-
 export const Input = () => {
   return (
     <div className={styles.input}>
@@ -61,10 +56,10 @@ export const InputIncorrect = (style, className, ...props) => {
   );
 };
 
-export const InputDisabled = (disabled, className, ...props) => {
+export const InputDisabled = (style, className, ...props) => {
   const InputClass = cn({
     [styles.field]: true,
-    [styles.fieldDisabled]: disabled,
+    [styles.fieldDisabled]: style,
     [className]: !!className,
   });
   return (

@@ -1,6 +1,6 @@
 import cn from "classnames";
 import styles from "./Dropdown.module.css";
-import { Checkbox, CheckboxChecked } from "../Checkbox/Checkbox";
+import { Checkbox, Checkbox2 } from "../Checkbox/Checkbox";
 import { Radio } from "../Radio/Radio";
 
 export const DropdownSection = () => {
@@ -9,7 +9,7 @@ export const DropdownSection = () => {
     [styles.dropdownBlockCheckbox]: true,
   });
   const DropdownCheckboxChecked = cn({
-    [CheckboxChecked]: true,
+    [Checkbox2]: true,
     [styles.dropdownBlockCheckbox]: true,
   });
   const DropdownRadio = cn({
