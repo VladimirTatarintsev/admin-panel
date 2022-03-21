@@ -19,7 +19,7 @@ export const Input = () => {
   );
 };
 
-export const InputIncorrect = (style, className, ...props) => {
+export const InputIncorrect = (style, className) => {
   const InputClass = cn({
     [styles.field]: true,
     [styles.fieldIncorrect]: style,
@@ -38,14 +38,12 @@ export const InputIncorrect = (style, className, ...props) => {
           placeholder="Введите"
           value="06.12.2021"
           className={InputClass}
-          {...props}
         />
         <button className={styles.button}>
           <svg
             className={styles.icon}
             viewBox="0 0 16 16"
             fill="none"
-            stroke="#BAD8F5"
             xmlns="http://www.w3.org/2000/svg"
           >
             <path d="M12.5 3.5L3.5 12.5M3.5 3.5L12.5 12.5" fill="none" />
@@ -56,7 +54,7 @@ export const InputIncorrect = (style, className, ...props) => {
   );
 };
 
-export const InputDisabled = (style, className, ...props) => {
+export const InputDisabled = (style, className) => {
   const InputClass = cn({
     [styles.field]: true,
     [styles.fieldDisabled]: style,
@@ -71,7 +69,6 @@ export const InputDisabled = (style, className, ...props) => {
         <input
           disabled
           className={InputClass}
-          {...props}
           type="text"
           id="inputDisabled"
           placeholder="Введите"
@@ -108,7 +105,7 @@ export const InputForm = () => {
       </div>
 
       <div className={styles.formContainer}>
-        <InputIncorrect></InputIncorrect>
+        <InputIncorrect />
       </div>
 
       <div className={styles.formContainer}>

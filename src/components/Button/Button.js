@@ -1,15 +1,9 @@
+import React from "react";
 import cn from "classnames";
 import styles from "./Button.module.css";
-import { capitalize } from "../Helper/Helper";
-import Bin from "../../icons/Bin.svg";
+import { ReactComponent as Bin } from "../../icons/bin.svg";
 
-export const ButtonPrimaryLargeWhithIcon = (
-  color = "primary",
-  size = "large",
-  className,
-  children,
-  ...props
-) => {
+export const ButtonPrimaryLargeWhithIcon = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorPrimary]: color,
     [styles.sizeLarge]: size,
@@ -17,21 +11,14 @@ export const ButtonPrimaryLargeWhithIcon = (
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      <Bin />
-      {children}
+    <button className={buttonClass}>
+      <Bin className={styles.icon} />
       <span className={styles.text}>Text here</span>
     </button>
   );
 };
 
-export const ButtonPrimaryLarge = (
-  color = "primary",
-  size = "large",
-  className,
-  children,
-  ...props
-) => {
+export const ButtonPrimaryLarge = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorPrimary]: color,
     [styles.sizeLarge]: size,
@@ -39,42 +26,28 @@ export const ButtonPrimaryLarge = (
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      {children}
+    <button className={buttonClass}>
       <span className={styles.text}>Text here</span>
     </button>
   );
 };
 
-export const buttonPrimaryIconSizeLarge = (
-  color = "primary",
-  size = "large",
-  className,
-  children,
-  ...props
-) => {
+export const buttonPrimarySizeLargeIcon = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorPrimary]: color,
     [styles.sizeLarge]: size,
-    [sizeLargeIcon]: true,
+    [styles.sizeLargeIcon]: true,
     [styles.sectionButton]: true,
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      <Bin />
-      {children}
+    <button className={buttonClass}>
+      <Bin className={styles.icon} />
     </button>
   );
 };
 
-export const ButtonSecondaryLargeWhithIcon = (
-  color = "secondary",
-  size = "large",
-  className,
-  children,
-  ...props
-) => {
+export const ButtonSecondaryLargeWhithIcon = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorSecondary]: color,
     [styles.sizeLarge]: size,
@@ -82,21 +55,14 @@ export const ButtonSecondaryLargeWhithIcon = (
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      <Bin />
-      {children}
+    <button className={buttonClass}>
+      <Bin className={styles.icon} />
       <span className={styles.text}>Text here</span>
     </button>
   );
 };
 
-export const ButtonSecondaryLarge = (
-  color = "secondary",
-  size = "large",
-  className,
-  children,
-  ...props
-) => {
+export const ButtonSecondaryLarge = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorSecondary]: color,
     [styles.sizeLarge]: size,
@@ -104,42 +70,28 @@ export const ButtonSecondaryLarge = (
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      {children}
+    <button className={buttonClass}>
       <span className={styles.text}>Text here</span>
     </button>
   );
 };
 
-export const buttonSecondaryIconSizeLarge = (
-  color = "secondary",
-  size = "large",
-  className,
-  children,
-  ...props
-) => {
+export const buttonSecondaryIconSizeLarge = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorSecondary]: color,
     [styles.sizeLarge]: size,
-    [sizeLargeIcon]: true,
+    [styles.sizeLargeIcon]: true,
     [styles.sectionButton]: true,
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      <Bin />
-      {children}
+    <button className={buttonClass}>
+      <Bin className={styles.icon} />
     </button>
   );
 };
 
-export const ButtonTertiaryLargeWhithIcon = (
-  color = "tertiary",
-  size = "large",
-  className,
-  children,
-  ...props
-) => {
+export const ButtonTertiaryLargeWhithIcon = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorTertiary]: color,
     [styles.sizeLarge]: size,
@@ -147,21 +99,14 @@ export const ButtonTertiaryLargeWhithIcon = (
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      <Bin />
-      {children}
+    <button className={buttonClass}>
+      <Bin className={styles.icon} />
       <span className={styles.text}>Text here</span>
     </button>
   );
 };
 
-export const ButtonTertiaryLarge = (
-  color = "tertiary",
-  size = "large",
-  className,
-  children,
-  ...props
-) => {
+export const ButtonTertiaryLarge = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorTertiary]: color,
     [styles.sizeLarge]: size,
@@ -169,42 +114,28 @@ export const ButtonTertiaryLarge = (
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      {children}
+    <button className={buttonClass}>
       <span className={styles.text}>Text here</span>
     </button>
   );
 };
 
-export const buttonTertiaryIconSizeLarge = (
-  color = "tertiary",
-  size = "large",
-  className,
-  children,
-  ...props
-) => {
+export const buttonTertiaryIconSizeLarge = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorTertiary]: color,
     [styles.sizeLarge]: size,
-    [sizeLargeIcon]: true,
+    [styles.sizeLargeIcon]: true,
     [styles.sectionButton]: true,
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      <Bin />
-      {children}
+    <button className={buttonClass}>
+      <Bin className={styles.icon} />
     </button>
   );
 };
 
-export const ButtonPrimaryMediumWhithIcon = (
-  color = "primary",
-  size = "medium",
-  className,
-  children,
-  ...props
-) => {
+export const ButtonPrimaryMediumWhithIcon = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorPrimary]: color,
     [styles.sizeMedium]: size,
@@ -212,21 +143,14 @@ export const ButtonPrimaryMediumWhithIcon = (
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      <Bin />
-      {children}
+    <button className={buttonClass}>
+      <Bin className={styles.icon} color={color} size={size} />
       <span className={styles.text}>Text here</span>
     </button>
   );
 };
 
-export const ButtonPrimaryMedium = (
-  color = "primary",
-  size = "medium",
-  className,
-  children,
-  ...props
-) => {
+export const ButtonPrimaryMedium = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorPrimary]: color,
     [styles.sizeMedium]: size,
@@ -234,42 +158,28 @@ export const ButtonPrimaryMedium = (
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      {children}
+    <button className={buttonClass}>
       <span className={styles.text}>Text here</span>
     </button>
   );
 };
 
-export const buttonPrimaryIconSizeMedium = (
-  color = "primary",
-  size = "medium",
-  className,
-  children,
-  ...props
-) => {
+export const buttonPrimaryIconSizeMedium = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorPrimary]: color,
     [styles.sizeMedium]: size,
-    [sizeMediumIcon]: true,
+    [styles.sizeMediumIcon]: true,
     [styles.sectionButton]: true,
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      <Bin />
-      {children}
+    <button className={buttonClass}>
+      <Bin className={styles.icon} />
     </button>
   );
 };
 
-export const ButtonSecondaryMediumWhithIcon = (
-  color = "secondary",
-  size = "medium",
-  className,
-  children,
-  ...props
-) => {
+export const ButtonSecondaryMediumWhithIcon = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorSecondary]: color,
     [styles.sizeMedium]: size,
@@ -277,21 +187,14 @@ export const ButtonSecondaryMediumWhithIcon = (
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      <Bin />
-      {children}
+    <button className={buttonClass}>
+      <Bin className={styles.icon} />
       <span className={styles.text}>Text here</span>
     </button>
   );
 };
 
-export const ButtonSecondaryMedium = (
-  color = "secondary",
-  size = "medium",
-  className,
-  children,
-  ...props
-) => {
+export const ButtonSecondaryMedium = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorSecondary]: color,
     [styles.sizeMedium]: size,
@@ -299,67 +202,85 @@ export const ButtonSecondaryMedium = (
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
-      {children}
+    <button className={buttonClass}>
       <span className={styles.text}>Text here</span>
     </button>
   );
 };
 
-export const buttonSecondaryIconSizeMedium = (
-  color = "secondary",
-  size = "medium",
-  className,
-  children,
-  ...props
-) => {
+export const buttonSecondaryIconSizeMedium = ({ color, size, className }) => {
   const buttonClass = cn(styles.button, {
     [styles.colorSecondary]: color,
     [styles.sizeMedium]: size,
-    [sizeMediumIcon]: true,
+    [styles.sizeMediumIcon]: true,
     [styles.sectionButton]: true,
     [className]: !!className,
   });
   return (
-    <button className={buttonClass} {...props}>
+    <button className={buttonClass}>
       <Bin />
-      {children}
     </button>
   );
 };
-export const SectionButton = () => {
-  <div className={styles.section}>
-    <ButtonPrimaryLargeWhithIcon />
-    <ButtonPrimaryLarge />
-    <buttonPrimaryIconSizeLarge />
-  </div>;
+
+export const SectionButtonPrimaryLarge = (color, size) => {
+  return (
+    <div className={styles.section}>
+      <ButtonPrimaryLargeWhithIcon color={color} size={size} />
+      <ButtonPrimaryLarge color={color} size={size} />
+      <buttonPrimarySizeLargeIcon color={color} size={size} />
+    </div>
+  );
 };
+
+export const SectionButtonSecondaryLarge = (color, size) => {
+  return (
+    <div className={styles.section}>
+      <ButtonSecondaryLargeWhithIcon color={color} size={size} />
+      <ButtonSecondaryLarge color={color} size={size} />
+      <buttonSecondaryIconSizeLarge color={color} size={size} />
+    </div>
+  );
+};
+
+export const SectionButtonTertiaryLarge = (color, size) => {
+  return (
+    <div className={styles.section}>
+      <ButtonTertiaryLargeWhithIcon color={color} size={size} />
+      <ButtonTertiaryLarge color={color} size={size} />
+      <buttonTertiaryIconSizeLarge color={color} size={size} />
+    </div>
+  );
+};
+
+export const SectionButtonPrimaryMedium = (color, size) => {
+  return (
+    <div className={styles.section}>
+      <ButtonPrimaryMediumWhithIcon color={color} size={size} />
+      <ButtonPrimaryMedium color={color} size={size} />
+      <buttonPrimaryIconSizeMedium color={color} size={size} />
+    </div>
+  );
+};
+
+export const SectionButtonSecondaryMedium = (color, size) => {
+  return (
+    <div className={styles.section}>
+      <ButtonSecondaryMediumWhithIcon color={color} size={size} />
+      <ButtonSecondaryMedium color={color} size={size} />
+      <buttonSecondaryIconSizeMedium color={color} size={size} />
+    </div>
+  );
+};
+
 export const ButtonTable = () => {
   return (
     <div className={styles.buttonTable}>
-      <div className={styles.section}>
-        <ButtonSecondaryLargeWhithIcon />
-        <ButtonSecondaryLarge />
-        <buttonSecondaryIconSizeLarge />
-      </div>
-
-      <div className={styles.section}>
-        <ButtonTertiaryLargeWhithIcon />
-        <ButtonTertiaryLarge />
-        <buttonTertiaryIconSizeLarge />
-      </div>
-
-      <div className={styles.section}>
-        <ButtonPrimaryMediumWhithIcon />
-        <ButtonPrimaryMedium />
-        <buttonPrimaryIconSizeMedium />
-      </div>
-
-      <div className={styles.section}>
-        <ButtonSecondaryMediumWhithIcon />
-        <ButtonSecondaryMedium />
-        <buttonSecondaryIconSizeMedium />
-      </div>
+      <SectionButtonPrimaryLarge />
+      <SectionButtonSecondaryLarge />
+      <SectionButtonTertiaryLarge />
+      <SectionButtonPrimaryMedium />
+      <SectionButtonSecondaryMedium />
     </div>
   );
 };
