@@ -1,36 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-html,
-body {
-  height: 100vh;
-  width: 100%;
-  font-family: "Ubuntu", sans-serif;
-}
-.wrapper {
-  width: 36rem;
-  height: 23.5rem;
-  border: 1px dashed #8055ff;
-  border-radius: 5px;
-  padding: 3rem;
-  white-space: nowrap;
-  flex: 0 0 auto;
-}
-.buttonTable {
-  display: flex;
-  flex-wrap: wrap;
-  height: 100%;
-}
-.section {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex: 0 0 33%;
-}
-
-.sectionButton {
-  margin-bottom: 1rem;
-}
 .button {
   cursor: pointer;
   height: 2rem;
@@ -41,6 +8,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.sectionButton {
+  margin-bottom: 1rem;
 }
 .colorPrimary {
   background: #459df5;
@@ -58,11 +28,6 @@ body {
 .icon {
   width: 1rem;
   height: 1rem;
-}
-.text {
-  font-size: 13px;
-  line-height: 1rem;
-  display: block;
 }
 .sizeLarge {
   height: 2rem;
@@ -93,4 +58,9 @@ body {
 }
 .colorTertiary .icon {
   stroke: #000;
+}
+.buttonFullWidth {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

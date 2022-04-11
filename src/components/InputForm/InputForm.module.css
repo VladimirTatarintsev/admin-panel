@@ -1,0 +1,20 @@
+.form {
+  width: 352px;
+  height: 360px;
+  border: 1px dashed #8055ff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  padding: 48px;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+.formContainer:nth-last-child(1) {
+  margin-bottom: 0px;
+}

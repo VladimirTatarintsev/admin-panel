@@ -1,37 +1,19 @@
-html,
-body {
-  width: 100%;
-  height: 100%;
-}
-.checkboxBlock {
-  width: 6.5rem;
-  height: 4rem;
-  border: 1px dashed #8055ff;
-  box-sizing: border-box;
-  border-radius: 5px;
+.checkboxWrapper {
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  margin-right: 3rem;
-}
-.checkbox {
-  display: flex;
-  align-items: center;
   justify-content: center;
+  height: 1rem;
 }
-.checkboxItem {
+.label > .checkbox {
   z-index: -1;
   opacity: 0;
   position: absolute;
 }
-.checkboxItem + .checkboxLabel {
+.label > .customCheckbox {
   display: inline-flex;
   align-items: center;
   user-select: none;
-  width: 100%;
-  height: 100%;
 }
-.checkboxItem + .checkboxLabel::before {
+.label > .customCheckbox::before {
   content: "";
   cursor: pointer;
   width: 16px;
@@ -43,11 +25,11 @@ body {
   background-size: 100%;
   box-sizing: border-box;
 }
-.checkboxItem:checked + .checkboxLabel::before {
+.label > .checkbox:checked + .customCheckbox::before {
   border-color: #459df5;
   background-color: #459df5;
   background-image: url(../../icons/checkmark.svg);
 }
-.checkboxItem:checked + .checkboxLabel {
+.label > .checkbox:checked + .customCheckbox {
   color: #459df5;
 }

@@ -1,0 +1,17 @@
+.block {
+  width: 22rem;
+  height: 12rem;
+  border: 1px dashed #8055ff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 3rem;
+}
+.itemGroup {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

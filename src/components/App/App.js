@@ -1,6 +1,6 @@
 import {
   InputForm,
-  SearchBar,
+  SearchBarBlock,
   CheckboxBlock,
   RadioBlock,
   ButtonTable,
@@ -11,20 +11,20 @@ import style from "./App.module.css";
 export const App = () => {
   return (
     <div className={style.components}>
-      <div className={style.wrapper}>
+      <div className={style.wrapperInput}>
         <InputForm />
       </div>
-      <div className={style.wrapper}>
-        <SearchBar />
+      <div className={style.wrapperSearchBar}>
+        <SearchBarBlock />
       </div>
-      <div className={style.wrapper}>
+      <div className={style.wrapperCheckboxRadio}>
         <CheckboxBlock />
         <RadioBlock />
       </div>
-      <div className={style.wrapper}>
+      <div className={style.wrapperButton}>
         <ButtonTable />
       </div>
-      <div className={style.wrapper}>
+      <div className={style.wrapperDropdown}>
         <DropdownSection />
       </div>
     </div>
