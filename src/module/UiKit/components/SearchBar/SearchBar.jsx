@@ -1,6 +1,6 @@
-import { Input } from "../Input/Input";
+import { Input } from "../../../../components/Input/Input";
 import styles from "./SearchBar.module.css";
-import { ReactComponent as IconSearch } from "../../icons/search.svg";
+import { ReactComponent as IconSearch } from "../../../../icons/search.svg";
 
 
 export const SearchBarItem = ({ defaultValue }) => {

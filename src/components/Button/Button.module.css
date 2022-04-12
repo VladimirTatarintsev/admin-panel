@@ -9,9 +9,7 @@
   align-items: center;
   justify-content: center;
 }
-.sectionButton {
-  margin-bottom: 1rem;
-}
+
 .colorPrimary {
   background: #459df5;
   color: white;
@@ -52,6 +50,7 @@
 }
 .colorPrimary .icon {
   stroke: #fff;
+  fill: #fff;
 }
 .colorSecondary .icon {
   stroke: #459df5;

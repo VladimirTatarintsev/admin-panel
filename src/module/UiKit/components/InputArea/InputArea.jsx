@@ -1,11 +1,11 @@
+import { Label, Input } from "../../../../components";
 import styles from "./InputArea.module.css";
-import { Label } from "../Label/Label";
-import { Input } from "../Input/Input";
 
 
-export const InputArea = () => {
+export const InputArea = ({ children }) => {
 	return (
 		<div className={styles.area}>
+			{children}
 			<Label htmlFor="inputEmpty">Дата и время заказа</Label>
 			<Input id="inputEmpty"/>
 		</div>
@@ -25,7 +25,7 @@ export const InputAreaDisabled = () => {
 	return (
 		<div className={styles.area}>
 			<Label htmlFor="inputDisabled">Дата и время заказа</Label>
-			<Input id="inputDisabled" disabled defaultValue="06.12.2021"/>
+			<Input id="inputDisabled" disabled={true} defaultValue="06.12.2021"/>
 		</div>
 	)
 }

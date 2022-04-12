@@ -2,7 +2,7 @@ import cn from "classnames";
 import styles from "./Button.module.css";
 
 
-export const Button = ({ color, size, icon: Icon, iconSize, children, className, fullWidth, marginBottom }) => {
+export const Button = ({ color, size, icon: Icon, iconSize, children, className, fullWidth }) => {
 	const buttonClass = cn ( styles.button, className, {
 		[styles.colorPrimary]: color==="primary",
 		[styles.colorSecondary]: color==="secondary",
@@ -12,7 +12,6 @@ export const Button = ({ color, size, icon: Icon, iconSize, children, className,
 		[styles.sizeLargeIcon]: iconSize==="large",
 		[styles.sizeMediumIcon]: iconSize==="medium",
 		[styles.buttonFullWidth]: fullWidth,
-		[styles.sectionButton]: marginBottom,
 	})
 	return (
 		<button className={buttonClass}>

@@ -1,15 +1,7 @@
-import { ButtonTable } from "./ButtonTable/ButtonTable";
-import { CheckboxBlock } from "./CheckboxBlock/CheckboxBlock";
-import { RadioBlock } from "./RadioBlock/RadioBlock";
-import { DropdownSection } from "./Dropdown/Dropdown";
-import { InputForm } from "./InputForm/InputForm";
-import { SearchBarBlock } from "./SearchBarBlock/SearchBarBlock";
-
-export {
-  ButtonTable,
-  CheckboxBlock,
-  RadioBlock,
-  DropdownSection,
-  InputForm,
-  SearchBarBlock,
-};
+export { Button } from "./Button/Button";
+export { Input } from "./Input/Input";
+export { Label } from "./Label/Label";
+export { Checkbox } from "./Checkbox/Checkbox";
+export { Radio } from "./Radio/Radio";
+export { Dropdown } from "./Dropdown/Dropdown";
+export { ControlLabel } from "./ControlLabel/ControlLabel";

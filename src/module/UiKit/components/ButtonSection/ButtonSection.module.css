@@ -5,3 +5,6 @@
   flex: 0 0 33%;
   font-family: "Ubuntu" sans-serif;
 }
+.sectionButton {
+  margin-bottom: 1rem;
+}

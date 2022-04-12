@@ -7,6 +7,7 @@ export const Radio = ({
 	type = "radio",
 	name = "radio",
 	defaultChecked,
+	withoutIcon = false,
 }) => {
 	const CheckboxClass = cn (styles.radioWrapper, className)
   return (
@@ -18,7 +19,7 @@ export const Radio = ({
 				name={name}
 				defaultChecked={defaultChecked}
 			/>
-			<span className={styles.customRadio}/>
+			{withoutIcon || <span className={styles.customRadio}/>}
 		</label>
     </div>
   );
