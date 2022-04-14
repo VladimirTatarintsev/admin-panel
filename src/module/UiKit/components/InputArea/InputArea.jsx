@@ -2,10 +2,9 @@ import { Label, Input } from "../../../../components";
 import styles from "./InputArea.module.css";
 
 
-export const InputArea = ({ children }) => {
+export const InputArea = () => {
 	return (
 		<div className={styles.area}>
-			{children}
 			<Label htmlFor="inputEmpty">Дата и время заказа</Label>
 			<Input id="inputEmpty"/>
 		</div>

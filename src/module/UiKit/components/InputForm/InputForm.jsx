@@ -3,11 +3,10 @@ import { InputArea, InputAreaIncorrect, InputAreaDisabled } from "../InputArea/I
 
 
 
-export const InputForm = ({children}) => {
+export const InputForm = () => {
 	return (
 	  <div className={styles.form}>
 		 <div className={styles.formContainer}>
-			 {children}
 			<InputArea />
 		 </div>
  
