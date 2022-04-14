@@ -27,12 +27,6 @@
 .dropdownBlock:nth-last-child(1) {
   margin-right: 0;
 }
-.dropdownBlockCheckbox {
-  width: 100%;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-}
 .dropdownLabel {
   width: 100%;
   height: 2rem;
@@ -40,16 +34,9 @@
   align-items: center;
   padding-left: 1rem;
 }
-.dropdownBlockRadio {
-  width: 100%;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-}
 .dropdownBlockButton {
   margin-bottom: 0.5rem;
 }
-
 .dropdownBlockButton:nth-last-child(1) {
   margin: 0;
 }

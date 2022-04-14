@@ -29,6 +29,7 @@ export const Input = ({
 			placeholder={placeholder}
 			defaultValue={defaultValue}
 			onChange={onChange}
+			disabled={disabled}
 		/>
 		{ IconInput && <IconInput className={styles.searchIconInput}/> }
 

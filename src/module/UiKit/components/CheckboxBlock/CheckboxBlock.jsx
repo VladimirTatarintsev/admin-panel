@@ -5,8 +5,6 @@ export const CheckboxBlock = ({children}) => {
 	return (
 	  <div className={styles.checkboxBlock}>
 		  {children}
-		 {/* <Checkbox/>
-		 <Checkbox defaultChecked/> */}
 	  </div>
 	);
 };

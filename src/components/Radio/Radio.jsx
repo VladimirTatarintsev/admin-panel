@@ -6,7 +6,9 @@ export const Radio = ({
 	className,
 	type = "radio",
 	name = "radio",
-	defaultChecked,
+	checked = false,
+	onChange = () => {},
+	value,
 	withoutIcon = false,
 }) => {
 	const CheckboxClass = cn (styles.radioWrapper, className)
@@ -14,10 +16,12 @@ export const Radio = ({
     <div className={CheckboxClass}>
 		 <label className={styles.label}>
 			<input
-				className={styles.radio}
-				type={type}
-				name={name}
-				defaultChecked={defaultChecked}
+				className = {styles.radio}
+				type = {type}
+				name = {name}
+				checked = {checked}
+				value = {value}
+				onChange = {onChange}
 			/>
 			{withoutIcon || <span className={styles.customRadio}/>}
 		</label>
