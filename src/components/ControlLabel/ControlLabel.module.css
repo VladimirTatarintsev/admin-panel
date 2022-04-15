@@ -1,16 +1,16 @@
 .label {
   display: flex;
   padding-left: 1rem;
+  width: 100%;
 }
 .controlLabel {
   display: block;
-  padding-left: 0.5rem;
-  width: 100%;
+  margin-left: 0.5rem;
   align-items: center;
 }
 .checked {
   color: #459df5;
 }
 .withOutIcon {
-  padding-left: 0px;
+  margin-left: 0px;
 }
