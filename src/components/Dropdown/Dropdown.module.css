@@ -1,15 +1,3 @@
-.dropdownSection {
-  display: flex;
-  align-items: flex-start;
-  flex: 1 1 auto;
-  line-height: 1rem;
-}
-.dropdownSectionTop {
-  margin-bottom: 6rem;
-}
-.dropdownSectionTop .dropdownBlock {
-  padding: 0.5rem 0;
-}
 .dropdownBlock {
   display: flex;
   flex-direction: column;
@@ -23,54 +11,4 @@
 }
 .dropdownBlock:nth-last-child(1) {
   margin-right: 0;
-}
-.dropdownBlockCheckbox {
-  width: 100%;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-}
-.dropdownLabel {
-  width: 100%;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-}
-.dropdownBlockRadio {
-  width: 100%;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-}
-
-.radioItemNone {
-  z-index: -1;
-  opacity: 0;
-  position: absolute;
-}
-.radioItemNone + .radioLabelNone {
-  display: inline-flex;
-  align-items: center;
-  user-select: none;
-  width: 100%;
-  height: 100%;
-}
-.radioItemNone:checked + .radioLabelNone {
-  color: #459df5;
-}
-.dropdownBlockButton {
-  margin-bottom: 0.5rem;
-}
-
-.dropdownBlockButton:nth-last-child(1) {
-  margin: 0;
-}
-.buttonLabel {
-  margin-bottom: 0.5rem;
-}
-.buttonColorSecondary .buttonIcon {
-  fill: #459df5;
-}
-.buttonColorPrimary .buttonIcon {
-  fill: #fff;
 }

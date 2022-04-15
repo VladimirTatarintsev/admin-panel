@@ -15,7 +15,7 @@ export const Input = ({
 	iconInput: IconInput,
 	onChange,
 }) => {
-	const InputClass = cn( styles.field, className, {
+	const inputClass = cn( styles.field, className, {
 		[styles.iconInput]: IconInput,
 		[styles.fieldIncorrect]: isError,
 		[styles.fieldDisabled]: disabled,
@@ -23,7 +23,7 @@ export const Input = ({
   return ( 
 	<div className={styles.input}>
 		<input
-			className={InputClass}
+			className={inputClass}
 			type={type}
 			id={id}
 			placeholder={placeholder}

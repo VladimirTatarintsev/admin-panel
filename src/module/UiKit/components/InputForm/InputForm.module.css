@@ -18,3 +18,11 @@
 .formContainer:nth-last-child(1) {
   margin-bottom: 0px;
 }
+.area {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.label {
+  margin-bottom: 0.5rem;
+}

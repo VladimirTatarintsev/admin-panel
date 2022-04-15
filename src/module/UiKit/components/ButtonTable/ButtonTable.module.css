@@ -3,3 +3,19 @@
   flex-wrap: wrap;
   height: 100%;
 }
+.sectionTop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 33%;
+  margin-bottom: 1.75rem;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 33%;
+}
+.sectionButton {
+  margin-bottom: 1rem;
+}

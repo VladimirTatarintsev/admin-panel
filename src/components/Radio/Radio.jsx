@@ -4,26 +4,25 @@ import styles from "./Radio.module.css";
 
 export const Radio = ({
 	className,
-	type = "radio",
-	name = "radio",
+	name = "",
 	checked = false,
 	onChange = () => {},
 	value,
-	withoutIcon = false,
+	withIcon = true,
 }) => {
-	const CheckboxClass = cn (styles.radioWrapper, className)
+	const radioClass = cn (styles.radioWrapper, className)
   return (
-    <div className={CheckboxClass}>
+    <div className={radioClass}>
 		 <label className={styles.label}>
 			<input
 				className = {styles.radio}
-				type = {type}
+				type = "radio"
 				name = {name}
 				checked = {checked}
 				value = {value}
 				onChange = {onChange}
 			/>
-			{withoutIcon || <span className={styles.customRadio}/>}
+			{withIcon && <span className={styles.customRadio}/>}
 		</label>
     </div>
   );

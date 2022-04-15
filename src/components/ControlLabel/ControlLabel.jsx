@@ -2,14 +2,14 @@ import cn from "classnames"
 import styles from "./ControlLabel.module.css"
 
 export const ControlLabel = ({ control, label, className }) => {
-	const ControlLabelClass = cn( styles.controlLabel, className,{
+	const controlLabelClass = cn( styles.controlLabel, className,{
 		[styles.checked]: control.props.checked,
-		[styles.withoutIcon]: control.props.withoutIcon,
+		[styles.withOutIcon]: !control.props.withIcon,
 	})
 	return (
-		<label className={styles.label}>
+		<label className={cn(styles.label, className)}>
 			{control}
-			<span className={ControlLabelClass}>{label}</span>
+			<span className={controlLabelClass}>{label}</span>
 		</label>
 	)
 }

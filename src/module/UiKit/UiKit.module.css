@@ -63,8 +63,15 @@ body {
   align-items: flex-start;
   padding: 1rem;
 }
+.radio {
+  padding-left: 0;
+}
 .dropdownBlock:nth-last-child(1) {
   margin-right: 0;
+}
+.label {
+  margin-bottom: 0.5rem;
+  width: 100%;
 }
 .dropdownLabel {
   width: 100%;

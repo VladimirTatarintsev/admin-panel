@@ -9,7 +9,11 @@
   align-items: center;
   justify-content: center;
 }
-
+.text {
+  font-size: 13px;
+  line-height: 1rem;
+  display: block;
+}
 .colorPrimary {
   background: #459df5;
   color: white;
@@ -31,22 +35,22 @@
   height: 2rem;
   padding: 0.5rem 1rem;
 }
-.sizeLarge .icon {
-  margin-right: 0.5rem;
+.sizeLarge .icon + .text {
+  margin-left: 0.5rem;
 }
-.sizeLargeIcon {
+.sizeMedium .icon + .text {
+  margin-left: 0.25rem;
+}
+.sizeLarge ~ .iconOnly {
   padding: 0.5rem;
 }
 .sizeMedium {
   height: 1.5rem;
   padding: 0.25rem 0.5rem;
 }
-.sizeMediumIcon {
+.sizeMedium ~ .iconOnly {
   padding: 0.25rem;
   height: 1.5rem;
-}
-.sizeMedium .icon {
-  margin-right: 0.25rem;
 }
 .colorPrimary .icon {
   stroke: #fff;
@@ -60,6 +64,4 @@
 }
 .buttonFullWidth {
   width: 100%;
-  display: flex;
-  justify-content: center;
 }

@@ -6,8 +6,8 @@ export const Label = ({
 	className,
 	htmlFor,
 }) => {
-	const LabelClass = cn(styles.label, className)
+	const labelClass = cn(styles.label, className)
 	return (
-		<label className={LabelClass} htmlFor={htmlFor}>{children}</label>
+		<label className={labelClass} htmlFor={htmlFor}>{children}</label>
 	)
 }

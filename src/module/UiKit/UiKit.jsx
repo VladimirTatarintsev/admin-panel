@@ -7,16 +7,16 @@ import {
 	ButtonTable,
 	DropdownSection,
 } from "../index";
-import { Checkbox, Input, Dropdown, Radio, Button, ControlLabel, Label} from "../../components";
+import { Checkbox, Input, Dropdown, Radio, Button, ControlLabel, Label} from "components";
 import { ReactComponent as IconSun} from "icons/sun.svg";
 import { ReactComponent as IconMoon} from "icons/moon.svg";
 import styles from "./UiKit.module.css";
  
 export const UiKit = () => {
 
-	const xor = (arr, item) => {
+	const xor = (arr, status) => {
 		return (
-			arr.includes(item) ? arr.filter((i)=>i !==item) : arr.concat(item)
+			arr.includes(status) ? arr.filter((i)=>i !==status) : arr.concat(status)
 		)
 	}
 		
@@ -26,7 +26,7 @@ export const UiKit = () => {
 
 	const [dropdownRadio, setDropdownRadio] = useState("");
 
-	const handleChangeisChecked = ({target: {value}}) => {
+	const handleChangeIsChecked = ({target: {value}}) => {
 		setIsChecked (xor(isChecked, value));
 	}
 	const handleChangeDropdownRadio = ({target: {value}}) => {
@@ -45,12 +45,21 @@ export const UiKit = () => {
 		 </div>
 		 <div className={styles.wrapperCheckboxRadio}>
 			<CheckboxBlock>
-				 <Checkbox checked={isChecked.includes("check1")} value="check1" onChange={handleChangeisChecked }/> 
-		 		 <Checkbox checked={isChecked.includes("check2")} value="check2" onChange={handleChangeisChecked }/> 
+				 <Checkbox checked={isChecked.includes("check1")} 
+					value="check1" 
+					onChange={handleChangeIsChecked } 
+				 /> 
+		 		 <Checkbox checked={isChecked.includes("check2")} 
+					value="check2" 
+					onChange={handleChangeIsChecked } /> 
 			</CheckboxBlock>
 			<RadioBlock>
-				<Radio checked={defaultRadio==="radio1"} value="radio1" onChange={handleDefaultRadioChange}/>
-				<Radio checked={defaultRadio==="radio2"} value="radio2" onChange={handleDefaultRadioChange} />
+				<Radio checked={defaultRadio==="radio1"} 
+					value="radio1" 
+					onChange={handleDefaultRadioChange}/>
+				<Radio checked={defaultRadio==="radio2"} 
+					value="radio2" 
+					onChange={handleDefaultRadioChange}/>
 			</RadioBlock>
 		 </div>
 		 <div className={styles.wrapperButton}>
@@ -61,45 +70,52 @@ export const UiKit = () => {
 				<Dropdown className={styles.dropdownBlock}>
 					<ControlLabel className={styles.dropdownLabel}
 						control={<Checkbox checked={ isChecked.includes("new")}
-						onChange={handleChangeisChecked} 
+						onChange={handleChangeIsChecked} 
 						value="new"/>}
 						label="Новый"
+						withIcon={true}
 					/>
 					<ControlLabel className={styles.dropdownLabel}
 						control={<Checkbox checked={ isChecked.includes("calc")}
-						onChange={handleChangeisChecked} 
+						onChange={handleChangeIsChecked} 
 						value="calc"/>}
 						label="Расчет"
+						withIcon={true}
 					/>
 					<ControlLabel className={styles.dropdownLabel} 
 						control={<Checkbox checked={ isChecked.includes("confirmed")}
-						onChange={handleChangeisChecked}
+						onChange={handleChangeIsChecked}
 						value="confirmed"/>} 
 						label="Подтвержден"
+						withIcon={true}
 					/>
 					<ControlLabel className={styles.dropdownLabel} 
 						control={<Checkbox checked={ isChecked.includes("postponed")}  
-						onChange={handleChangeisChecked}
+						onChange={handleChangeIsChecked}
 						value="postponed"/>} 
 						label="Отложен"
+						withIcon={true}
 					/>
 					<ControlLabel className={styles.dropdownLabel} 
 						control={<Checkbox checked={ isChecked.includes("completed")}  
-						onChange={handleChangeisChecked}
+						onChange={handleChangeIsChecked}
 						value="completed"/>} 
-						label="Выполнен"/>
+						label="Выполнен"
+						withIcon={true}
+					/>
 					<ControlLabel className={styles.dropdownLabel} 
 						control={<Checkbox checked={ isChecked.includes("canceled")} 
-						onChange={handleChangeisChecked}
+						onChange={handleChangeIsChecked}
 						value="canceled"/>} 
 						label="Отменен"
+						withIcon={true}
 					/>
 				</Dropdown>
 
 				<Dropdown className={styles.dropdownBlock}>
 					<ControlLabel className={styles.dropdownLabel} 
 						control={<Radio checked={ dropdownRadio === "new"} 
-						withoutIcon={true} 
+						withIcon={false} 
 						name="radioBtn" 
 						value="new" 
 						onChange={handleChangeDropdownRadio}/>} 
@@ -107,7 +123,7 @@ export const UiKit = () => {
 					/>
 					<ControlLabel className={styles.dropdownLabel} 
 						control={<Radio checked={ dropdownRadio === "calc"} 
-						withoutIcon={true} 
+						withIcon={false} 
 						name="radioBtn" 
 						value="calc" 
 						onChange={handleChangeDropdownRadio}/>} 
@@ -115,7 +131,7 @@ export const UiKit = () => {
 					/>
 					<ControlLabel className={styles.dropdownLabel} 
 						control={<Radio checked={ dropdownRadio === "confirmed"} 
-						withoutIcon={true} 
+						withIcon={false} 
 						name="radioBtn" 
 						value="confirmed" 
 						onChange={handleChangeDropdownRadio}/>} 
@@ -123,7 +139,7 @@ export const UiKit = () => {
 					/>
 					<ControlLabel className={styles.dropdownLabel} 
 						control={<Radio checked={ dropdownRadio === "postponed"} 
-						withoutIcon={true} 
+						withIcon={false} 
 						name="radioBtn" 
 						value="postponed" 
 						onChange={handleChangeDropdownRadio}/>} 
@@ -131,7 +147,7 @@ export const UiKit = () => {
 					/>
 					<ControlLabel className={styles.dropdownLabel} 
 						control={<Radio checked={ dropdownRadio === "completed"} 
-						withoutIcon={true} 
+						withIcon={false} 
 						name="radioBtn" 
 						value="completed" 
 						onChange={handleChangeDropdownRadio}/>} 
@@ -139,7 +155,7 @@ export const UiKit = () => {
 					/>
 					<ControlLabel className={styles.dropdownLabel} 
 						control={<Radio checked={ dropdownRadio === "canceled"} 
-						withoutIcon={true} 
+						withIcon={false} 
 						name="radioBtn" 
 						value="canceled" 
 						onChange={handleChangeDropdownRadio}/>} 
@@ -149,11 +165,11 @@ export const UiKit = () => {
 			</DropdownSection>
 			<DropdownSection>
 				<Dropdown>
-					<Label htmlFor="pageNumber">Номер страницы</Label>
+					<Label className={styles.label} htmlFor="pageNumber">Номер страницы</Label>
 					<Input id="pageNumber" placeholder="Введите номер"/>
 				</Dropdown>
 				<Dropdown>
-					<Label>Удалить n записей?</Label>
+					<Label className={styles.label}>Удалить n записей?</Label>
 					<Button className={styles.dropdownBlockButton} color="secondary" size="medium" fullWidth>
 						Удалить
 					</Button>
@@ -162,7 +178,7 @@ export const UiKit = () => {
 					</Button>
 				</Dropdown>
 				<Dropdown>
-				<Label>Выберите тему</Label>
+				<Label className={styles.label}>Выберите тему</Label>
 					<Button className={styles.dropdownBlockButton} color="secondary" size="medium" icon={IconSun} fullWidth>
 						Светлая
 					</Button>

@@ -3,9 +3,9 @@ import styles from "./Dropdown.module.css";
 
 
 export const Dropdown = ({ className, children }) => {
-	const DropdownClass = cn (styles.dropdownBlock, className)
+	const dropdownClass = cn (styles.dropdownBlock, className)
 	return (
-		<div className={DropdownClass}>
+		<div className={dropdownClass}>
 			{children}
 		</div>
 	)

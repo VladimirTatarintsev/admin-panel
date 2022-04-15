@@ -1,16 +1,47 @@
+import { Button } from "components";
+import { ReactComponent as IconBin } from "icons/bin.svg";
 import styles from "./ButtonTable.module.css";
-import { SectionButtonPrimaryLarge, SectionButtonSecondaryLarge, SectionButtonTertiaryLarge, SectionButtonPrimaryMedium, SectionButtonSecondaryMedium } from "../ButtonSection/ButtonSection";
-
 
 
 export const ButtonTable = () => {
+	
   return (
     <div className={styles.buttonTable}>
-      <SectionButtonPrimaryLarge />
-      <SectionButtonSecondaryLarge />
-      <SectionButtonTertiaryLarge />
-      <SectionButtonPrimaryMedium />
-      <SectionButtonSecondaryMedium />
+      <div className={styles.sectionTop}>
+			<Button className={styles.sectionButton} color="primary" size="large" icon={IconBin}>
+				Text Here
+			</Button>
+			<Button className={styles.sectionButton} color="primary" size="large">Text Here</Button>
+			<Button className={styles.sectionButton} color="primary" size="large" icon={IconBin}/>
+    	</div>
+		 <div className={styles.sectionTop}>
+      	<Button className={styles.sectionButton} color="secondary" size="large" icon={IconBin}>
+				Text Here
+			</Button>
+			<Button className={styles.sectionButton} color="secondary" size="large">Text Here</Button>
+			<Button className={styles.sectionButton} color="secondary" size="large" icon={IconBin}/>
+    	</div>
+		 <div className={styles.section}>
+			<Button className={styles.sectionButton} color="tertiary" size="large" icon={IconBin}>
+				Text Here
+			</Button>
+			<Button className={styles.sectionButton} color="tertiary" size="large" >Text Here</Button>
+			<Button className={styles.sectionButton} color="tertiary" size="large" icon={IconBin}/>
+    	</div>
+		 <div className={styles.section}>
+			<Button className={styles.sectionButton} color="primary" size="medium" icon={IconBin}>
+				Text Here
+			</Button>
+			<Button className={styles.sectionButton} color="primary" size="medium">Text Here</Button>
+			<Button className={styles.sectionButton} color="primary" size="medium" icon={IconBin}/>
+    	</div>
+		 <div className={styles.section}>
+			<Button className={styles.sectionButton} color="secondary" size="medium" icon={IconBin}>
+				Text Here
+			</Button>
+			<Button className={styles.sectionButton} color="secondary" size="medium">Text Here</Button>
+			<Button className={styles.sectionButton} color="secondary" size="medium" icon={IconBin}/>
+    	</div>
     </div>
   );
 };
