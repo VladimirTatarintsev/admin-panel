@@ -1,0 +1,71 @@
+html,
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: "Ubuntu", sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+.components {
+  padding-top: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+}
+.wrapperCheckboxRadio {
+  display: flex;
+  margin: 0 3rem 3rem 0;
+}
+.wrapperInput {
+  line-height: 1rem;
+  font-weight: 400;
+  margin: 0 3rem 3rem 0;
+}
+.wrapperButton {
+  width: 36rem;
+  height: 23.5rem;
+  border: 1px dashed #8055ff;
+  border-radius: 5px;
+  padding: 3rem;
+  white-space: nowrap;
+  flex: 0 0 auto;
+  margin: 0 3rem 3rem 0;
+}
+.wrapperDropdown {
+  width: 42rem;
+  height: 32rem;
+  border: 1px dashed #8055ff;
+  border-radius: 5px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  margin: 0 3rem 3rem 0;
+}
+.wrapperSearchBar {
+  color: #000;
+  margin: 0 3rem 3rem 0;
+}
+.dropdownSectionTop .dropdownBlock {
+  padding: 0.5rem 0;
+}
+
+.label {
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+.dropdownLabel {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+.dropdownBlockButton {
+  margin-bottom: 0.5rem;
+}
+.dropdownBlockButton:nth-last-child(1) {
+  margin: 0;
+}
