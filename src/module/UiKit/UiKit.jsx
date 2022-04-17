@@ -6,7 +6,7 @@ import {
   RadioBlock,
   ButtonTable,
   DropdownSection,
-} from "../index";
+} from "./components/index";
 import {
   Checkbox,
   Input,
