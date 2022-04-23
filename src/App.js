@@ -1,5 +1,6 @@
-import { UiKit } from "./module/UiKit/UiKit";
+import { OrderPage } from "module/OrderPage/OrderPage";
+import {} from "./module/UiKit/UiKit";
 
 export const App = () => {
-  return <UiKit />;
+  return <OrderPage />;
 };

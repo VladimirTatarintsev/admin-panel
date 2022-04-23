@@ -5,3 +5,4 @@ export { Checkbox } from "./Checkbox/Checkbox";
 export { Radio } from "./Radio/Radio";
 export { Dropdown } from "./Dropdown/Dropdown";
 export { ControlLabel } from "./ControlLabel/ControlLabel";
+export { TableCell } from "./TableCell/TableCell";
