@@ -31,7 +31,7 @@
   background: inherit;
   position: absolute;
   display: flex;
-  right: 8px;
+  right: 0.5rem;
   padding: 0;
 }
 .iconLocked {
@@ -51,10 +51,18 @@
   left: 9.5px;
   stroke: #459df5;
 }
+.text {
+  position: absolute;
+  left: 0.5rem;
+}
+.textInput {
+  padding: 8px 32px 8px 26px;
+}
 .buttonIcon {
   width: 1rem;
   height: 1rem;
   stroke: #bad8f5;
+  fill: #bad8f5;
 }
 .fieldDisabled {
   background: #bad8f5;
