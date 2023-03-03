@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { capitalize } from "helpers/capitalize";
+import { capitalize } from "helpers/helpers";
 import styles from "./Button.module.css";
 
 export const Button = ({

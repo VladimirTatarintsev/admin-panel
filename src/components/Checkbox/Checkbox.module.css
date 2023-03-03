@@ -28,6 +28,7 @@
 }
 .label > .checkbox:checked + .customCheckbox::before {
   border-color: #459df5;
+  box-shadow: 0px 0px 2px 1px #fff;
   background-color: #459df5;
   background-image: url(../../icons/checkmark.svg);
 }

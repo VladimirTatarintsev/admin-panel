@@ -1,4 +1,4 @@
-import { TOGGLE_FILTERS } from "redux/constants/actionTypes";
+import { TOGGLE_FILTERS } from "store/constants/actionTypes";
 
 const initialState = {
   isFiltersVisible: false,

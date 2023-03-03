@@ -5,6 +5,7 @@
   margin: 0 auto;
   position: relative;
   font-size: 13px;
+  max-width: 1500px;
 }
 .title {
   margin-bottom: 2rem;
@@ -110,7 +111,40 @@
 .cell {
   color: #000;
 }
-
-.footerButton {
+.optionBtnsContainer {
+  display: flex;
+}
+.optionButton {
   margin-left: 1rem;
+}
+.optionButtonWrap {
+  position: relative;
+}
+.deleteDropdown {
+  position: absolute;
+  left: 1rem;
+  top: -7.5rem;
+}
+.dropdownBlockButton {
+  margin-bottom: 0.5rem;
+}
+
+.pagination {
+  display: flex;
+}
+.pageNum {
+  font-size: 0.75rem;
+  height: 1.5rem;
+  width: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  color: #459df5;
+  cursor: pointer;
+  margin-right: 0.25rem;
+}
+.currentPage {
+  background-color: #459df5;
+  color: #fff;
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Button,
@@ -18,43 +18,56 @@ import { ReactComponent as IconPencil } from "icons/pencil.svg";
 import { ReactComponent as IconBin } from "icons/bin.svg";
 import { ReactComponent as IconArrow } from "icons/v_arrow.svg";
 import cn from "classnames";
-import styles from "./OrderPage.module.css";
 import { TableHeader, TableBody, TableFooter, TableRow } from "./components";
-import { orderFiltersSelector } from "redux/selectors/orderFilters";
-import { setFilters } from "redux/actionCreators/setFilters";
-import { getOrderList } from "redux/selectors/getOrderList";
-import { toggleFilters } from "redux/actionCreators/toggleFilters";
-import { setClearAllInput } from "redux/actionCreators/setClearAllInput";
-import { toggleFiltersSelector } from "redux/selectors/toggleFilters";
-import { setClearActiveInput } from "redux/actionCreators/setClearActiveInput";
-
-const xor = (arr, status) => {
-  return arr.includes(status)
-    ? arr.filter((i) => i !== status)
-    : arr.concat(status);
-};
+import { orderFiltersSelector } from "store/selectors/orderFilters";
+import { setFilters } from "store/actionCreators/setFilters";
+import { getOrderList } from "store/selectors/getOrderList";
+import { toggleFilters } from "store/actionCreators/toggleFilters";
+import { setClearAllInput } from "store/actionCreators/setClearAllInput";
+import { toggleFiltersSelector } from "store/selectors/toggleFilters";
+import { setClearActiveInput } from "store/actionCreators/setClearActiveInput";
+import { getSelectedOrders } from "store/selectors/selectedOrders";
+import { getPagination } from "store/selectors/pagination";
+import {
+  setIsAllOrdersSelected,
+  setSelectedAllOrders,
+  setSelectedOrders,
+} from "store/actionCreators/setSelectedOrders";
+import { setOrders } from "store/actionCreators/setOrders";
+import { getTotalPages, createPages, xor } from "helpers/helpers";
+import styles from "./OrderPage.module.css";
+import { setPagination } from "store/actionCreators/setPagination";
 
 export const OrderPage = ({ className }) => {
   const dispatch = useDispatch();
-
   const { search, dateFrom, dateTo, amountFrom, amountTo } =
     useSelector(orderFiltersSelector);
   const orders = useSelector(getOrderList);
   const { isFiltersVisible } = useSelector(toggleFiltersSelector);
+  const { selectedOrders, isAllOrdersSelected } =
+    useSelector(getSelectedOrders);
+  const { currentPage, pageLimit } = useSelector(getPagination);
+  const [isChecked, setIsChecked] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(true);
+  const [showDeleteDropdown, setShowDeleteDropdown] = useState(false);
 
+  const pages = [];
+  const totalPages = getTotalPages(orders.length, pageLimit);
+
+  useMemo(() => {
+    createPages(pages, totalPages);
+  }, [pages]);
+  const handleSetCurrentPage = (page) => dispatch(setPagination(page));
   const handleChangeInput = ({ target: { name, value } }) => {
     dispatch(setFilters({ name, value }));
   };
-  const [isChecked, setIsChecked] = useState([]);
-  const [showDropdown, setShowDropdown] = useState(true);
-
   const handleClickShowDropdown = () => {
     setShowDropdown(!showDropdown);
   };
-
-  const handleChangeIsChecked = ({ target: { value } }) => {
+  const handleSetIsChecked = ({ target: { value } }) => {
     setIsChecked(xor(isChecked, value));
   };
+
   const handleClearAllInput = ({ target: { name, value } }) => {
     dispatch(setClearAllInput({ name, value }));
   };
@@ -62,6 +75,26 @@ export const OrderPage = ({ className }) => {
   const handleClearActiveInput = ({ target: { name } }) => {
     dispatch(setClearActiveInput({ name }));
   };
+
+  const handleSetSelectedOrders = ({ target: { value } }) => {
+    dispatch(setSelectedOrders(value));
+  };
+  const handleSetIsAllOrdersSelected = () => {
+    dispatch(setIsAllOrdersSelected(!isAllOrdersSelected));
+    dispatch(setSelectedAllOrders(orders.map((order) => order.id)));
+  };
+  const handleClickDeleteOrders = () => {
+    selectedOrders.forEach((id) => dispatch(setOrders(id)));
+    dispatch(setSelectedOrders(""));
+    setShowDeleteDropdown(false);
+  };
+  useEffect(() => {
+    if (orders.length === 0) {
+      dispatch(setIsAllOrdersSelected(false));
+    } else if (selectedOrders.length === orders.length) {
+      dispatch(setIsAllOrdersSelected(true));
+    } else dispatch(setIsAllOrdersSelected(false));
+  }, [selectedOrders, orders]);
 
   return (
     <div className={cn(styles.wrapper, className)}>
@@ -162,7 +195,7 @@ export const OrderPage = ({ className }) => {
                   control={
                     <Checkbox
                       checked={isChecked.includes("new")}
-                      onChange={handleChangeIsChecked}
+                      onChange={handleSetIsChecked}
                       withIcon={true}
                       value="new"
                     />
@@ -174,7 +207,7 @@ export const OrderPage = ({ className }) => {
                   control={
                     <Checkbox
                       checked={isChecked.includes("calc")}
-                      onChange={handleChangeIsChecked}
+                      onChange={handleSetIsChecked}
                       withIcon={true}
                       value="calc"
                     />
@@ -186,7 +219,7 @@ export const OrderPage = ({ className }) => {
                   control={
                     <Checkbox
                       checked={isChecked.includes("confirmed")}
-                      onChange={handleChangeIsChecked}
+                      onChange={handleSetIsChecked}
                       withIcon={true}
                       value="confirmed"
                     />
@@ -198,7 +231,7 @@ export const OrderPage = ({ className }) => {
                   control={
                     <Checkbox
                       checked={isChecked.includes("postponed")}
-                      onChange={handleChangeIsChecked}
+                      onChange={handleSetIsChecked}
                       withIcon={true}
                       value="postponed"
                     />
@@ -210,7 +243,7 @@ export const OrderPage = ({ className }) => {
                   control={
                     <Checkbox
                       checked={isChecked.includes("completed")}
-                      onChange={handleChangeIsChecked}
+                      onChange={handleSetIsChecked}
                       withIcon={true}
                       value="completed"
                     />
@@ -222,7 +255,7 @@ export const OrderPage = ({ className }) => {
                   control={
                     <Checkbox
                       checked={isChecked.includes("canceled")}
-                      onChange={handleChangeIsChecked}
+                      onChange={handleSetIsChecked}
                       withIcon={true}
                       value="canceled"
                     />
@@ -271,9 +304,8 @@ export const OrderPage = ({ className }) => {
         <TableHeader>
           <TableCell>
             <Checkbox
-              checked={isChecked.includes("all")}
-              onChange={handleChangeIsChecked}
-              value="all"
+              checked={isAllOrdersSelected}
+              onChange={handleSetIsAllOrdersSelected}
             />
           </TableCell>
           <TableCell icon={IconArrow}>id</TableCell>
@@ -288,50 +320,90 @@ export const OrderPage = ({ className }) => {
             <TableRow key={order.id}>
               <TableCell>
                 <Checkbox
-                  checked={isChecked.includes(`${order.id}`)}
+                  checked={selectedOrders.includes(`${order.id}`)}
+                  onChange={handleSetSelectedOrders}
                   value={order.id}
                 />
               </TableCell>
-              <TableCell className={styles.cell} key={order.id}>
-                {order.id}
+              <TableCell className={styles.cell}>{order.id}</TableCell>
+              <TableCell className={styles.cell}>{order.date}</TableCell>
+              <TableCell className={styles.cell}>{order.status}</TableCell>
+              <TableCell className={styles.cell}>{order.position}</TableCell>
+              <TableCell className={styles.cell}>
+                {`${order.sum !== "-" ? order.sum + " ₽" : order.sum}  `}
               </TableCell>
-              <TableCell className={styles.cell} key={order.date}>
-                {order.date}
-              </TableCell>
-              <TableCell className={styles.cell} key={order.status}>
-                {order.status}
-              </TableCell>
-              <TableCell className={styles.cell} key={order.position}>
-                {order.position}
-              </TableCell>
-              <TableCell className={styles.cell} key={order.sum}>
-                {order.sum}
-              </TableCell>
-              <TableCell className={styles.cell} key={order.fullName}>
-                {order.fullName}
-              </TableCell>
+              <TableCell className={styles.cell}>{order.fullName}</TableCell>
             </TableRow>
           ))}
         </TableBody>
         <TableFooter>
-          Выбрано записей: 0
-          <Button
-            className={styles.footerButton}
-            color="primary"
-            size="medium"
-            icon={IconPencil}
-          >
-            Изменить статус
-          </Button>
-          <Button
-            className={styles.footerButton}
-            color="red"
-            size="medium"
-            icon={IconBin}
-          >
-            Удалить
-          </Button>
-          <div className={styles.pagination}></div>
+          <div className={styles.footerSection}>
+            <span>{`Выбрано записей: ${selectedOrders?.length}`}</span>
+            {!!selectedOrders.length && (
+              <div className={styles.optionBtnsContainer}>
+                <Button
+                  className={styles.optionButton}
+                  color="primary"
+                  size="medium"
+                  icon={IconPencil}
+                >
+                  Изменить статус
+                </Button>
+                <div className={styles.optionButtonWrap}>
+                  <Button
+                    className={styles.optionButton}
+                    color="red"
+                    size="medium"
+                    icon={IconBin}
+                    onClick={() => setShowDeleteDropdown(!showDeleteDropdown)}
+                  >
+                    Удалить
+                  </Button>
+                  {showDeleteDropdown && (
+                    <Dropdown className={styles.deleteDropdown}>
+                      <Label
+                        className={styles.label}
+                      >{`Удалить ${selectedOrders.length} записей?`}</Label>
+                      <Button
+                        className={styles.dropdownBlockButton}
+                        color="secondary"
+                        size="medium"
+                        fullWidth
+                        onClick={() => handleClickDeleteOrders()}
+                      >
+                        Удалить
+                      </Button>
+                      <Button
+                        color="primary"
+                        size="medium"
+                        fullWidth
+                        onClick={(e) => {
+                          setShowDeleteDropdown(false);
+                        }}
+                      >
+                        Отмена
+                      </Button>
+                    </Dropdown>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+          <div className={styles.footerSection}>
+            <div className={styles.pagination}>
+              {pages?.map((page, index) => (
+                <span
+                  className={`${[styles.pageNum]} ${
+                    currentPage === page ? [styles.currentPage] : ""
+                  }`}
+                  key={index}
+                  onClick={() => handleSetCurrentPage(page)}
+                >
+                  {page}
+                </span>
+              ))}
+            </div>
+          </div>
         </TableFooter>
       </div>
     </div>

@@ -1,3 +1,5 @@
+import { DELETE_SELECTED_ORDERS } from "store/constants/actionTypes";
+
 const initialState = [
   {
     id: "1270989",
@@ -85,13 +87,23 @@ const initialState = [
     date: "07.11.2020, 18:52",
     status: "Отменен",
     position: "-",
-    sum: "- ",
+    sum: "-",
     fullName: "София Ротару",
+  },
+  {
+    id: "1311115",
+    date: "18.09.2020, 15:02",
+    status: "Выполнен",
+    position: "-",
+    sum: "-",
+    fullName: "София Ротару2",
   },
 ];
 
-export const orderList = (state = initialState, { type }) => {
+export const orderList = (state = initialState, { type, payload }) => {
   switch (type) {
+    case DELETE_SELECTED_ORDERS:
+      return state.filter((order) => order.id !== payload);
     default:
       return state;
   }

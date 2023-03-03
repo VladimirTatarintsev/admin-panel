@@ -1,6 +1,6 @@
-import { SET_FILTERS } from "redux/constants/actionTypes";
-import { SET_CLEAR_ALL_INPUT } from "redux/constants/actionTypes";
-import { SET_CLEAR_ACTIVE_INPUT } from "redux/constants/actionTypes";
+import { SET_FILTERS } from "store/constants/actionTypes";
+import { SET_CLEAR_ALL_INPUT } from "store/constants/actionTypes";
+import { SET_CLEAR_ACTIVE_INPUT } from "store/constants/actionTypes";
 
 const initialState = {
   search: "",
