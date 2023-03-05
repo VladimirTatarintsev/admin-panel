@@ -128,7 +128,9 @@
 .dropdownBlockButton {
   margin-bottom: 0.5rem;
 }
-
+.footerSection {
+  display: flex;
+}
 .pagination {
   display: flex;
 }

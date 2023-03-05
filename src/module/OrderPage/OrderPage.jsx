@@ -21,20 +21,20 @@ import cn from "classnames";
 import { TableHeader, TableBody, TableFooter, TableRow } from "./components";
 import { orderFiltersSelector } from "store/selectors/orderFilters";
 import { setFilters } from "store/actionCreators/setFilters";
-import { getOrderList } from "store/selectors/getOrderList";
+import { getOrders } from "store/selectors/orderList";
 import { toggleFilters } from "store/actionCreators/toggleFilters";
 import { setClearAllInput } from "store/actionCreators/setClearAllInput";
 import { toggleFiltersSelector } from "store/selectors/toggleFilters";
 import { setClearActiveInput } from "store/actionCreators/setClearActiveInput";
 import { getSelectedOrders } from "store/selectors/selectedOrders";
-import { getPagination } from "store/selectors/pagination";
+import { getOrderPages } from "store/selectors/orderList";
 import {
   setIsAllOrdersSelected,
   setSelectedAllOrders,
   setSelectedOrders,
 } from "store/actionCreators/setSelectedOrders";
 import { setOrders } from "store/actionCreators/setOrders";
-import { getTotalPages, createPages, xor } from "helpers/helpers";
+import { xor } from "helpers/helpers";
 import styles from "./OrderPage.module.css";
 import { setPagination } from "store/actionCreators/setPagination";
 
@@ -42,21 +42,15 @@ export const OrderPage = ({ className }) => {
   const dispatch = useDispatch();
   const { search, dateFrom, dateTo, amountFrom, amountTo } =
     useSelector(orderFiltersSelector);
-  const orders = useSelector(getOrderList);
+  const orders = useSelector(getOrders);
   const { isFiltersVisible } = useSelector(toggleFiltersSelector);
   const { selectedOrders, isAllOrdersSelected } =
     useSelector(getSelectedOrders);
-  const { currentPage, pageLimit } = useSelector(getPagination);
+  const { currentPage, pages } = useSelector(getOrderPages);
   const [isChecked, setIsChecked] = useState([]);
   const [showDropdown, setShowDropdown] = useState(true);
   const [showDeleteDropdown, setShowDeleteDropdown] = useState(false);
 
-  const pages = [];
-  const totalPages = getTotalPages(orders.length, pageLimit);
-
-  useMemo(() => {
-    createPages(pages, totalPages);
-  }, [pages]);
   const handleSetCurrentPage = (page) => dispatch(setPagination(page));
   const handleChangeInput = ({ target: { name, value } }) => {
     dispatch(setFilters({ name, value }));
