@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Button,
@@ -20,14 +20,21 @@ import { ReactComponent as IconArrow } from "icons/v_arrow.svg";
 import cn from "classnames";
 import { TableHeader, TableBody, TableFooter, TableRow } from "./components";
 import { orderFiltersSelector } from "store/selectors/orderFilters";
-import { setFilters } from "store/actionCreators/setFilters";
 import { getOrders } from "store/selectors/orderList";
 import { toggleFilters } from "store/actionCreators/toggleFilters";
-import { setClearAllInput } from "store/actionCreators/setClearAllInput";
+import {
+  setSearch,
+  setDateFrom,
+  setDateTo,
+  setAmountFrom,
+  setAmountTo,
+  clearAllInput,
+  setStatus,
+} from "store/actionCreators/setFilters";
 import { toggleFiltersSelector } from "store/selectors/toggleFilters";
-import { setClearActiveInput } from "store/actionCreators/setClearActiveInput";
 import { getSelectedOrders } from "store/selectors/selectedOrders";
 import { getOrderPages } from "store/selectors/orderList";
+import { setPagination } from "store/actionCreators/setPagination";
 import {
   setIsAllOrdersSelected,
   setSelectedAllOrders,
@@ -36,38 +43,58 @@ import {
 import { setOrders } from "store/actionCreators/setOrders";
 import { xor } from "helpers/helpers";
 import styles from "./OrderPage.module.css";
-import { setPagination } from "store/actionCreators/setPagination";
 
 export const OrderPage = ({ className }) => {
   const dispatch = useDispatch();
-  const { search, dateFrom, dateTo, amountFrom, amountTo } =
-    useSelector(orderFiltersSelector);
+  const { search } = useSelector(orderFiltersSelector);
   const orders = useSelector(getOrders);
   const { isFiltersVisible } = useSelector(toggleFiltersSelector);
   const { selectedOrders, isAllOrdersSelected } =
     useSelector(getSelectedOrders);
   const { currentPage, pages } = useSelector(getOrderPages);
   const [isChecked, setIsChecked] = useState([]);
+  const [filters, setFilters] = useState({
+    dateFromFilter: "",
+    dateToFilter: "",
+    amountFromFilter: "",
+    amountToFilter: "",
+    statusFilter: "Все",
+  });
   const [showDropdown, setShowDropdown] = useState(true);
   const [showDeleteDropdown, setShowDeleteDropdown] = useState(false);
-
   const handleSetCurrentPage = (page) => dispatch(setPagination(page));
-  const handleChangeInput = ({ target: { name, value } }) => {
-    dispatch(setFilters({ name, value }));
+  const handleChangeSearchInput = ({ target: { value } }) => {
+    dispatch(setSearch({ value }));
+  };
+  const handleChangeAdditionFilters = ({ target: { name, value } }) => {
+    setFilters({ ...filters, [name]: value });
+  };
+  const handleSetAdditionFilters = () => {
+    dispatch(setDateFrom(filters.dateFromFilter));
+    dispatch(setDateTo(filters.dateToFilter));
+    dispatch(setAmountFrom(filters.amountFromFilter));
+    dispatch(setAmountTo(filters.amountToFilter));
+    dispatch(setStatus(filters.statusFilter));
   };
   const handleClickShowDropdown = () => {
     setShowDropdown(!showDropdown);
   };
-  const handleSetIsChecked = ({ target: { value } }) => {
+  const handleSetSelectedStatus = ({ target: { value } }) => {
     setIsChecked(xor(isChecked, value));
   };
-
-  const handleClearAllInput = ({ target: { name, value } }) => {
-    dispatch(setClearAllInput({ name, value }));
+  const handleClearAllInput = () => {
+    setFilters({
+      dateFromFilter: "",
+      dateToFilter: "",
+      amountFromFilter: "",
+      amountToFilter: "",
+      statusFilter: "Все",
+    });
+    dispatch(clearAllInput());
   };
 
   const handleClearActiveInput = ({ target: { name } }) => {
-    dispatch(setClearActiveInput({ name }));
+    setFilters({ ...filters, [name]: "" });
   };
 
   const handleSetSelectedOrders = ({ target: { value } }) => {
@@ -109,7 +136,7 @@ export const OrderPage = ({ className }) => {
               value={search}
               iconRight={IconXMedium}
               placeholder="Номер заказа или ФИО"
-              onChange={handleChangeInput}
+              onChange={handleChangeSearchInput}
               onClick={handleClearActiveInput}
             />
             <Button
@@ -149,20 +176,20 @@ export const OrderPage = ({ className }) => {
                   text="с"
                   id="date"
                   placeholder="dd.mm.dddd"
-                  name="dateFrom"
-                  value={dateFrom}
+                  name="dateFromFilter"
+                  value={filters.dateFromFilter}
                   iconRight={IconXMedium}
-                  onChange={handleChangeInput}
+                  onChange={handleChangeAdditionFilters}
                   onClick={handleClearActiveInput}
                 />
                 <Input
                   className={styles.dateInput}
                   text="по"
-                  name="dateTo"
+                  name="dateToFilter"
                   placeholder="dd.mm.dddd"
-                  value={dateTo}
+                  value={filters.dateToFilter}
                   iconRight={IconXMedium}
-                  onChange={handleChangeInput}
+                  onChange={handleChangeAdditionFilters}
                   onClick={handleClearActiveInput}
                 />
               </div>
@@ -173,11 +200,11 @@ export const OrderPage = ({ className }) => {
               </Label>
               <Input
                 className={styles.selectInput}
-                value="Любой"
-                name="status"
+                value={filters.statusFilter}
+                name="statusFilter"
                 id="status"
                 iconRight={IconArrow}
-                onChange={handleChangeInput}
+                onChange={handleChangeAdditionFilters}
                 onClick={handleClickShowDropdown}
               />
               <Dropdown
@@ -188,10 +215,10 @@ export const OrderPage = ({ className }) => {
                   className={styles.dropdownLabel}
                   control={
                     <Checkbox
-                      checked={isChecked.includes("new")}
-                      onChange={handleSetIsChecked}
+                      checked={isChecked.includes("Новый")}
+                      onChange={handleSetSelectedStatus}
                       withIcon={true}
-                      value="new"
+                      value="Новый"
                     />
                   }
                   label="Новый"
@@ -200,10 +227,10 @@ export const OrderPage = ({ className }) => {
                   className={styles.dropdownLabel}
                   control={
                     <Checkbox
-                      checked={isChecked.includes("calc")}
-                      onChange={handleSetIsChecked}
+                      checked={isChecked.includes("Расчет")}
+                      onChange={handleSetSelectedStatus}
                       withIcon={true}
-                      value="calc"
+                      value="Расчет"
                     />
                   }
                   label="Расчет"
@@ -212,10 +239,10 @@ export const OrderPage = ({ className }) => {
                   className={styles.dropdownLabel}
                   control={
                     <Checkbox
-                      checked={isChecked.includes("confirmed")}
-                      onChange={handleSetIsChecked}
+                      checked={isChecked.includes("Подтвержден")}
+                      onChange={handleSetSelectedStatus}
                       withIcon={true}
-                      value="confirmed"
+                      value="Подтвержден"
                     />
                   }
                   label="Подтвержден"
@@ -224,10 +251,10 @@ export const OrderPage = ({ className }) => {
                   className={styles.dropdownLabel}
                   control={
                     <Checkbox
-                      checked={isChecked.includes("postponed")}
-                      onChange={handleSetIsChecked}
+                      checked={isChecked.includes("Отложен")}
+                      onChange={handleSetSelectedStatus}
                       withIcon={true}
-                      value="postponed"
+                      value="Отложен"
                     />
                   }
                   label="Отложен"
@@ -236,10 +263,10 @@ export const OrderPage = ({ className }) => {
                   className={styles.dropdownLabel}
                   control={
                     <Checkbox
-                      checked={isChecked.includes("completed")}
-                      onChange={handleSetIsChecked}
+                      checked={isChecked.includes("Выполнен")}
+                      onChange={handleSetSelectedStatus}
                       withIcon={true}
-                      value="completed"
+                      value="Выполнен"
                     />
                   }
                   label="Выполнен"
@@ -248,10 +275,10 @@ export const OrderPage = ({ className }) => {
                   className={styles.dropdownLabel}
                   control={
                     <Checkbox
-                      checked={isChecked.includes("canceled")}
-                      onChange={handleSetIsChecked}
+                      checked={isChecked.includes("Отменен")}
+                      onChange={handleSetSelectedStatus}
                       withIcon={true}
-                      value="canceled"
+                      value="Отменен"
                     />
                   }
                   label="Отменен"
@@ -266,28 +293,32 @@ export const OrderPage = ({ className }) => {
                 <Input
                   className={styles.sumInput}
                   text="от"
-                  name="amountFrom"
-                  value={amountFrom}
+                  name="amountFromFilter"
+                  value={filters.amountFromFilter}
                   iconRight={IconXMedium}
                   id="sum"
                   placeholder="₽"
-                  onChange={handleChangeInput}
+                  onChange={handleChangeAdditionFilters}
                   onClick={handleClearActiveInput}
                 />
                 <Input
                   className={styles.sumInput}
                   text="до"
-                  name="amountTo"
-                  value={amountTo}
+                  name="amountToFilter"
+                  value={filters.amountToFilter}
                   iconRight={IconXMedium}
                   placeholder="₽"
-                  onChange={handleChangeInput}
+                  onChange={handleChangeAdditionFilters}
                   onClick={handleClearActiveInput}
                 />
               </div>
             </div>
             <div className={styles.area}>
-              <Button color="secondary" size="large">
+              <Button
+                color="secondary"
+                size="large"
+                onClick={() => handleSetAdditionFilters()}
+              >
                 Применить
               </Button>
             </div>
@@ -324,7 +355,7 @@ export const OrderPage = ({ className }) => {
               <TableCell className={styles.cell}>{order.status}</TableCell>
               <TableCell className={styles.cell}>{order.position}</TableCell>
               <TableCell className={styles.cell}>
-                {`${order.sum !== "-" ? order.sum + " ₽" : order.sum}  `}
+                {`${order.sum !== "-" ? order.sum + " ₽" : order.sum}`}
               </TableCell>
               <TableCell className={styles.cell}>{order.fullName}</TableCell>
             </TableRow>

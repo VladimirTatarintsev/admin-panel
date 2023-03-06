@@ -3,7 +3,7 @@ import { DELETE_SELECTED_ORDERS } from "store/constants/actionTypes";
 const initialState = [
   {
     id: "1270989",
-    date: "15.02.2021, 18:00",
+    date: "15.02.2021",
     status: "Новый",
     position: "6",
     sum: "1010907",
@@ -12,7 +12,7 @@ const initialState = [
 
   {
     id: "2353474",
-    date: "12.03.2021, 05:15",
+    date: "12.03.2021",
     status: "Новый",
     position: "2",
     sum: "98003",
@@ -21,7 +21,7 @@ const initialState = [
 
   {
     id: "1103397",
-    date: "03.02.2021, 08:04",
+    date: "03.02.2021",
     status: "Рассчет",
     position: "5",
     sum: "3800",
@@ -30,7 +30,7 @@ const initialState = [
 
   {
     id: "6924662",
-    date: "21.01.2021, 13:32",
+    date: "21.01.2021",
     status: "Выполнен",
     position: "1",
     sum: "5700",
@@ -39,7 +39,7 @@ const initialState = [
 
   {
     id: "2200086",
-    date: "19.01.2021, 10:28",
+    date: "19.01.2021",
     status: "Отменен",
     position: "- ",
     sum: "-",
@@ -48,7 +48,7 @@ const initialState = [
 
   {
     id: "2842064",
-    date: "04.01.2021, 12:12",
+    date: "04.01.2021",
     status: "Отложен",
     position: "1",
     sum: "20500",
@@ -57,7 +57,7 @@ const initialState = [
 
   {
     id: "1730071",
-    date: "17.12.2020, 22:45",
+    date: "17.12.2020",
     status: "Выполнен",
     position: "1",
     sum: "1399",
@@ -66,7 +66,7 @@ const initialState = [
 
   {
     id: "7987376",
-    date: "07.12.2020, 08:57",
+    date: "07.12.2020",
     status: "Выполнен",
     position: "3",
     sum: "117810",
@@ -75,7 +75,7 @@ const initialState = [
 
   {
     id: "1373265",
-    date: "15.11.2020, 14:26",
+    date: "15.11.2020",
     status: "Выполнен",
     position: "1",
     sum: "17008",
@@ -84,7 +84,7 @@ const initialState = [
 
   {
     id: "1311100",
-    date: "07.11.2020, 18:52",
+    date: "07.11.2020",
     status: "Отменен",
     position: "-",
     sum: "-",
@@ -92,7 +92,7 @@ const initialState = [
   },
   {
     id: "1311115",
-    date: "18.09.2020, 15:02",
+    date: "18.09.2020",
     status: "Выполнен",
     position: "-",
     sum: "-",

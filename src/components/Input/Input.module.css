@@ -63,6 +63,7 @@
   height: 1rem;
   stroke: #bad8f5;
   fill: #bad8f5;
+  pointer-events: none;
 }
 .fieldDisabled {
   background: #bad8f5;
