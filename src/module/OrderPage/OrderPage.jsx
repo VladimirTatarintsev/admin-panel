@@ -69,7 +69,6 @@ export const OrderPage = ({ className }) => {
   });
   const [showDropdown, setShowDropdown] = useState(false);
   const [showDeleteDropdown, setShowDeleteDropdown] = useState(false);
-
   const handleSetCurrentPage = (page) => dispatch(setPagination(page));
   const handleChangeSearchInput = ({ target: { value } }) => {
     dispatch(setSearch({ value }));
@@ -123,7 +122,6 @@ export const OrderPage = ({ className }) => {
 
   const handleSetSelectedOrders = ({ target: { value } }) => {
     dispatch(setSelectedOrders(value));
-    console.log(value);
   };
   const handleSetIsAllOrdersSelected = () => {
     dispatch(setIsAllOrdersSelected(!isAllOrdersSelected));
@@ -236,6 +234,7 @@ export const OrderPage = ({ className }) => {
                 onFocus={() => setShowDropdown(true)}
                 onClick={handleClickShowDropdown}
                 placeholder="Нажмите для выбора"
+                readOnly
               />
               <Dropdown
                 className={styles.dropdownBlock}
@@ -449,32 +448,33 @@ export const OrderPage = ({ className }) => {
                   >
                     Удалить
                   </Button>
-                  {showDeleteDropdown && (
-                    <Dropdown className={styles.deleteDropdown}>
-                      <Label
-                        className={styles.label}
-                      >{`Удалить ${selectedOrders.length} записей?`}</Label>
-                      <Button
-                        className={styles.dropdownBlockButton}
-                        color="secondary"
-                        size="medium"
-                        fullWidth
-                        onClick={() => handleClickDeleteOrders()}
-                      >
-                        Удалить
-                      </Button>
-                      <Button
-                        color="primary"
-                        size="medium"
-                        fullWidth
-                        onClick={(e) => {
-                          setShowDeleteDropdown(false);
-                        }}
-                      >
-                        Отмена
-                      </Button>
-                    </Dropdown>
-                  )}
+                  <Dropdown
+                    className={styles.deleteDropdown}
+                    isDropdownVisible={showDeleteDropdown}
+                  >
+                    <Label
+                      className={styles.label}
+                    >{`Удалить ${selectedOrders.length} записей?`}</Label>
+                    <Button
+                      className={styles.dropdownBlockButton}
+                      color="secondary"
+                      size="medium"
+                      fullWidth
+                      onClick={() => handleClickDeleteOrders()}
+                    >
+                      Удалить
+                    </Button>
+                    <Button
+                      color="primary"
+                      size="medium"
+                      fullWidth
+                      onClick={(e) => {
+                        setShowDeleteDropdown(false);
+                      }}
+                    >
+                      Отмена
+                    </Button>
+                  </Dropdown>
                 </div>
               </div>
             )}

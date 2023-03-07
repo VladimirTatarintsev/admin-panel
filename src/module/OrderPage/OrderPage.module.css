@@ -64,10 +64,10 @@
   position: relative;
   margin-right: 1rem;
 }
-.area:nth-last-child(1) {
+.area:last-child {
   display: flex;
   align-items: flex-end;
-  flex: 1 0 40%;
+  flex: 1 1 40%;
 }
 .label {
   margin-bottom: 0.5rem;
@@ -125,6 +125,7 @@
 }
 .deleteDropdown {
   position: absolute;
+  z-index: 2;
   left: 1rem;
   top: -7.5rem;
 }

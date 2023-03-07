@@ -10,6 +10,7 @@ export const TableCell = ({
   icon: Icon,
   onClick,
   name,
+  iconLeft: IconLeft,
 }) => {
   const { key, direction } = useSelector(getSorting);
   return (
