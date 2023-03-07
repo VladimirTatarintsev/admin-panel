@@ -19,11 +19,9 @@ const stringDateToMilliseconds = (str) => {
   return Date.parse(`${year}-${month}-${day}`);
 };
 
-const isStringsEqual = (str1, str2) => {
-  if (str2 === "Все") {
-    return true;
-  } else if (str1 && str2) {
-    return str1.toLowerCase() === str2.toLowerCase();
+const isIncludesStatus = (arr, str) => {
+  if (arr.length && str) {
+    return arr.includes(str);
   }
   return true;
 };
@@ -39,6 +37,7 @@ const areAllTruthy = (values) => {
 const getFilteredAndSortedOrders = createSelector(
   [getOrderList, orderFiltersSelector],
   (orderList, { search, dateFrom, dateTo, amountFrom, amountTo, status }) => {
+    console.log(status);
     return orderList.filter((order) => {
       return areAllTruthy([
         isInRange(amountFrom, amountTo, Number(order.sum)),
@@ -47,7 +46,7 @@ const getFilteredAndSortedOrders = createSelector(
           stringDateToMilliseconds(dateTo),
           stringDateToMilliseconds(order.date)
         ),
-        isStringsEqual(order.status, status),
+        isIncludesStatus(status, order.status),
         isStartsWith(order.fullName, search) || isStartsWith(order.id, search),
       ]);
     });

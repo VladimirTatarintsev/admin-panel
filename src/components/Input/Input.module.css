@@ -56,13 +56,13 @@
   left: 0.5rem;
 }
 .textInput {
-  padding: 8px 32px 8px 26px;
+  padding: 8px 24px 8px 26px;
 }
 .buttonIcon {
   width: 1rem;
   height: 1rem;
-  stroke: #bad8f5;
-  fill: #bad8f5;
+  stroke: #86c2fa;
+  fill: #86c2fa;
   pointer-events: none;
 }
 .fieldDisabled {

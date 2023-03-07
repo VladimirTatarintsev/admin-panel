@@ -15,7 +15,7 @@ const initialState = {
   dateTo: "",
   amountFrom: "",
   amountTo: "",
-  status: "",
+  status: [],
 };
 
 export const orderFilters = (state = initialState, { type, payload }) => {

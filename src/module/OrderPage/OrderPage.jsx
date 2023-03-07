@@ -30,6 +30,7 @@ import {
   setAmountTo,
   clearAllInput,
   setStatus,
+  clearActiveInput,
 } from "store/actionCreators/setFilters";
 import { toggleFiltersSelector } from "store/selectors/toggleFilters";
 import { getSelectedOrders } from "store/selectors/selectedOrders";
@@ -58,13 +59,16 @@ export const OrderPage = ({ className }) => {
     dateToFilter: "",
     amountFromFilter: "",
     amountToFilter: "",
-    statusFilter: "Все",
+    statusFilter: [],
   });
-  const [showDropdown, setShowDropdown] = useState(true);
+  const [showDropdown, setShowDropdown] = useState(false);
   const [showDeleteDropdown, setShowDeleteDropdown] = useState(false);
   const handleSetCurrentPage = (page) => dispatch(setPagination(page));
   const handleChangeSearchInput = ({ target: { value } }) => {
     dispatch(setSearch({ value }));
+  };
+  const handleClearSearchInput = ({ target: { name, value } }) => {
+    dispatch(clearActiveInput({ name, value }));
   };
   const handleChangeAdditionFilters = ({ target: { name, value } }) => {
     setFilters({ ...filters, [name]: value });
@@ -76,11 +80,13 @@ export const OrderPage = ({ className }) => {
     dispatch(setAmountTo(filters.amountToFilter));
     dispatch(setStatus(filters.statusFilter));
   };
-  const handleClickShowDropdown = () => {
+  const handleClickShowDropdown = (e) => {
     setShowDropdown(!showDropdown);
+    e.stopPropagation();
   };
   const handleSetSelectedStatus = ({ target: { value } }) => {
     setIsChecked(xor(isChecked, value));
+    setFilters({ ...filters, statusFilter: xor(filters.statusFilter, value) });
   };
   const handleClearAllInput = () => {
     setFilters({
@@ -88,12 +94,13 @@ export const OrderPage = ({ className }) => {
       dateToFilter: "",
       amountFromFilter: "",
       amountToFilter: "",
-      statusFilter: "Все",
+      statusFilter: [],
     });
+    setIsChecked([]);
     dispatch(clearAllInput());
   };
 
-  const handleClearActiveInput = ({ target: { name } }) => {
+  const handleClearActiveAdditionInput = ({ target: { name } }) => {
     setFilters({ ...filters, [name]: "" });
   };
 
@@ -118,7 +125,10 @@ export const OrderPage = ({ className }) => {
   }, [selectedOrders, orders]);
 
   return (
-    <div className={cn(styles.wrapper, className)}>
+    <div
+      className={cn(styles.wrapper, className)}
+      onClick={() => setShowDropdown(false)}
+    >
       <div className={styles.title}>
         <span className={styles.text}>Список заказов</span>
         <Button icon={IconSun} color="secondary" size="large">
@@ -137,7 +147,7 @@ export const OrderPage = ({ className }) => {
               iconRight={IconXMedium}
               placeholder="Номер заказа или ФИО"
               onChange={handleChangeSearchInput}
-              onClick={handleClearActiveInput}
+              onClick={handleClearSearchInput}
             />
             <Button
               className={styles.filterButton}
@@ -180,7 +190,7 @@ export const OrderPage = ({ className }) => {
                   value={filters.dateFromFilter}
                   iconRight={IconXMedium}
                   onChange={handleChangeAdditionFilters}
-                  onClick={handleClearActiveInput}
+                  onClick={handleClearActiveAdditionInput}
                 />
                 <Input
                   className={styles.dateInput}
@@ -190,11 +200,11 @@ export const OrderPage = ({ className }) => {
                   value={filters.dateToFilter}
                   iconRight={IconXMedium}
                   onChange={handleChangeAdditionFilters}
-                  onClick={handleClearActiveInput}
+                  onClick={handleClearActiveAdditionInput}
                 />
               </div>
             </div>
-            <div className={styles.area}>
+            <div className={styles.area} onClick={(e) => e.stopPropagation()}>
               <Label className={styles.label} htmlFor="status">
                 Статус заказа
               </Label>
@@ -204,8 +214,9 @@ export const OrderPage = ({ className }) => {
                 name="statusFilter"
                 id="status"
                 iconRight={IconArrow}
-                onChange={handleChangeAdditionFilters}
+                onFocus={() => setShowDropdown(true)}
                 onClick={handleClickShowDropdown}
+                placeholder="Нажмите для выбора"
               />
               <Dropdown
                 className={styles.dropdownBlock}
@@ -299,7 +310,7 @@ export const OrderPage = ({ className }) => {
                   id="sum"
                   placeholder="₽"
                   onChange={handleChangeAdditionFilters}
-                  onClick={handleClearActiveInput}
+                  onClick={handleClearActiveAdditionInput}
                 />
                 <Input
                   className={styles.sumInput}
@@ -309,7 +320,7 @@ export const OrderPage = ({ className }) => {
                   iconRight={IconXMedium}
                   placeholder="₽"
                   onChange={handleChangeAdditionFilters}
-                  onClick={handleClearActiveInput}
+                  onClick={handleClearActiveAdditionInput}
                 />
               </div>
             </div>
