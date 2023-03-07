@@ -1,7 +1,9 @@
 import { xor } from "helpers/helpers";
-import { SET_SELECTED_ORDERS } from "store/constants/actionTypes";
-import { SET_IS_ALL_ORDERS_SELECTED } from "store/constants/actionTypes";
-import { SET_SELECTED_ALL_ORDERS } from "store/constants/actionTypes";
+import {
+  SET_SELECTED_ORDERS,
+  SET_IS_ALL_ORDERS_SELECTED,
+  SET_SELECTED_ALL_ORDERS,
+} from "store/constants/actionTypes";
 
 const initialState = {
   selectedOrders: [],

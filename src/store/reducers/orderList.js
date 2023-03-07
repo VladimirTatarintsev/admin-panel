@@ -94,8 +94,8 @@ const initialState = [
     id: "1311115",
     date: "18.09.2020",
     status: "Выполнен",
-    position: "-",
-    sum: "-",
+    position: "3",
+    sum: "13800",
     fullName: "София Ротару2",
   },
 ];

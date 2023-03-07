@@ -108,6 +108,9 @@
   flex-direction: column;
   box-sizing: border-box;
 }
+.headerCell Label {
+  pointer-events: none;
+}
 .cell {
   color: #000;
 }

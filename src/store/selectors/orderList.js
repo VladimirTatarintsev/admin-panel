@@ -2,6 +2,7 @@ import { createPages, getTotalPages } from "helpers/helpers";
 import { createSelector } from "reselect";
 import { orderFiltersSelector } from "./orderFilters";
 import { getPagination } from "./pagination";
+import { getSorting } from "./sorting";
 
 const getOrderList = ({ orderList }) => orderList;
 
@@ -12,6 +13,35 @@ const isInRange = (min, max, value) => {
     return value >= minValue && value <= maxValue;
   }
   return true;
+};
+const sortingOrder = (key, direction) => (a, b) => {
+  let valueA = a[key];
+  let valueB = b[key];
+
+  if (key === "date") {
+    valueA = stringDateToMilliseconds(a[key]);
+    valueB = stringDateToMilliseconds(b[key]);
+  }
+  if (key === "id" || key === "sum") {
+    valueA = Number(a[key]);
+    valueB = Number(b[key]);
+  }
+  if (direction === "asc") {
+    if (valueA > valueB) {
+      return 1;
+    }
+    if (valueA < valueB) {
+      return -1;
+    }
+    return 0;
+  }
+  if (valueA > valueB) {
+    return -1;
+  }
+  if (valueA < valueB) {
+    return 1;
+  }
+  return 0;
 };
 
 const stringDateToMilliseconds = (str) => {
@@ -35,21 +65,24 @@ const areAllTruthy = (values) => {
 };
 
 const getFilteredAndSortedOrders = createSelector(
-  [getOrderList, orderFiltersSelector],
-  (orderList, { search, dateFrom, dateTo, amountFrom, amountTo, status }) => {
-    console.log(status);
-    return orderList.filter((order) => {
-      return areAllTruthy([
-        isInRange(amountFrom, amountTo, Number(order.sum)),
-        isInRange(
-          stringDateToMilliseconds(dateFrom),
-          stringDateToMilliseconds(dateTo),
-          stringDateToMilliseconds(order.date)
-        ),
-        isIncludesStatus(status, order.status),
-        isStartsWith(order.fullName, search) || isStartsWith(order.id, search),
-      ]);
-    });
+  [getOrderList, orderFiltersSelector, getSorting],
+  (orderList, filters, { key, direction }) => {
+    const { search, dateFrom, dateTo, amountFrom, amountTo, status } = filters;
+    return orderList
+      .filter((order) => {
+        return areAllTruthy([
+          isInRange(amountFrom, amountTo, Number(order.sum)),
+          isInRange(
+            stringDateToMilliseconds(dateFrom),
+            stringDateToMilliseconds(dateTo),
+            stringDateToMilliseconds(order.date)
+          ),
+          isIncludesStatus(status, order.status),
+          isStartsWith(order.fullName, search) ||
+            isStartsWith(order.id, search),
+        ]);
+      })
+      .sort(sortingOrder(key, direction));
   }
 );
 

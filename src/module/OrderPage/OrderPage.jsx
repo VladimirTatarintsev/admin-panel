@@ -42,12 +42,18 @@ import {
   setSelectedOrders,
 } from "store/actionCreators/setSelectedOrders";
 import { setOrders } from "store/actionCreators/setOrders";
+import { getSorting } from "store/selectors/sorting";
+import {
+  setOrderSorting,
+  setSortDirection,
+} from "store/actionCreators/setSorting";
 import { xor } from "helpers/helpers";
 import styles from "./OrderPage.module.css";
 
 export const OrderPage = ({ className }) => {
   const dispatch = useDispatch();
   const { search } = useSelector(orderFiltersSelector);
+  const { key, direction } = useSelector(getSorting);
   const orders = useSelector(getOrders);
   const { isFiltersVisible } = useSelector(toggleFiltersSelector);
   const { selectedOrders, isAllOrdersSelected } =
@@ -63,6 +69,7 @@ export const OrderPage = ({ className }) => {
   });
   const [showDropdown, setShowDropdown] = useState(false);
   const [showDeleteDropdown, setShowDeleteDropdown] = useState(false);
+
   const handleSetCurrentPage = (page) => dispatch(setPagination(page));
   const handleChangeSearchInput = ({ target: { value } }) => {
     dispatch(setSearch({ value }));
@@ -80,14 +87,6 @@ export const OrderPage = ({ className }) => {
     dispatch(setAmountTo(filters.amountToFilter));
     dispatch(setStatus(filters.statusFilter));
   };
-  const handleClickShowDropdown = (e) => {
-    setShowDropdown(!showDropdown);
-    e.stopPropagation();
-  };
-  const handleSetSelectedStatus = ({ target: { value } }) => {
-    setIsChecked(xor(isChecked, value));
-    setFilters({ ...filters, statusFilter: xor(filters.statusFilter, value) });
-  };
   const handleClearAllInput = () => {
     setFilters({
       dateFromFilter: "",
@@ -99,13 +98,32 @@ export const OrderPage = ({ className }) => {
     setIsChecked([]);
     dispatch(clearAllInput());
   };
-
   const handleClearActiveAdditionInput = ({ target: { name } }) => {
     setFilters({ ...filters, [name]: "" });
   };
 
+  const handleClickShowDropdown = (e) => {
+    setShowDropdown(!showDropdown);
+    e.stopPropagation();
+  };
+  const handleSetSelectedStatus = ({ target: { value } }) => {
+    setIsChecked(xor(isChecked, value));
+    setFilters({ ...filters, statusFilter: xor(filters.statusFilter, value) });
+  };
+
+  const handleSetSort = ({ target }) => {
+    dispatch(setOrderSorting(target.dataset?.name));
+    let prevStatus = key;
+    if (prevStatus === target.dataset?.name) {
+      direction === "asc"
+        ? dispatch(setSortDirection("desc"))
+        : dispatch(setSortDirection("asc"));
+    } else dispatch(setSortDirection("asc"));
+  };
+
   const handleSetSelectedOrders = ({ target: { value } }) => {
     dispatch(setSelectedOrders(value));
+    console.log(value);
   };
   const handleSetIsAllOrdersSelected = () => {
     dispatch(setIsAllOrdersSelected(!isAllOrdersSelected));
@@ -116,6 +134,7 @@ export const OrderPage = ({ className }) => {
     dispatch(setSelectedOrders(""));
     setShowDeleteDropdown(false);
   };
+
   useEffect(() => {
     if (orders.length === 0) {
       dispatch(setIsAllOrdersSelected(false));
@@ -344,12 +363,47 @@ export const OrderPage = ({ className }) => {
               onChange={handleSetIsAllOrdersSelected}
             />
           </TableCell>
-          <TableCell icon={IconArrow}>id</TableCell>
-          <TableCell icon={IconArrow}>Дата</TableCell>
-          <TableCell icon={IconArrow}>Статус</TableCell>
-          <TableCell icon={IconArrow}>Позиций</TableCell>
-          <TableCell icon={IconArrow}>Сумма</TableCell>
-          <TableCell>ФИО покупателя</TableCell>
+          <TableCell
+            className={styles.headerCell}
+            icon={IconArrow}
+            onClick={(e) => handleSetSort(e)}
+            name="id"
+          >
+            id
+          </TableCell>
+          <TableCell
+            className={styles.headerCell}
+            icon={IconArrow}
+            onClick={(e) => handleSetSort(e)}
+            name="date"
+          >
+            Дата
+          </TableCell>
+          <TableCell
+            className={styles.headerCell}
+            icon={IconArrow}
+            onClick={(e) => handleSetSort(e)}
+            name="status"
+          >
+            Статус
+          </TableCell>
+          <TableCell
+            className={styles.headerCell}
+            icon={IconArrow}
+            onClick={(e) => handleSetSort(e)}
+            name="position"
+          >
+            Позиций
+          </TableCell>
+          <TableCell
+            className={styles.headerCell}
+            icon={IconArrow}
+            onClick={(e) => handleSetSort(e)}
+            name="sum"
+          >
+            Сумма
+          </TableCell>
+          <TableCell className={styles.headerCell}>ФИО покупателя</TableCell>
         </TableHeader>
         <TableBody>
           {orders.map((order) => (

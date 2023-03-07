@@ -14,3 +14,5 @@ export const SET_DATE_FROM = "SET_DATE_FROM";
 export const SET_DATE_TO = "SET_DATE_TO";
 export const SET_AMOUNT_FROM = "SET_AMOUNT_FROM";
 export const SET_AMOUNT_TO = "SET_AMOUNT_TO";
+export const SET_ORDER_SORTING = "SET_ORDER_SORTING";
+export const SET_SORT_DIRECTION = "SET_SORT_DIRECTION";
