@@ -3,8 +3,17 @@ import { createSelector } from "reselect";
 import { orderFiltersSelector } from "./orderFilters";
 import { getPagination } from "./pagination";
 import { getSorting } from "./sorting";
+import { getEditOrder } from "./editOrder";
 
 const getOrderList = ({ orderList }) => orderList;
+
+export const getOrderForEdit = createSelector(
+  [getOrderList, getEditOrder],
+  (orders, editOrder) =>
+    orders.find(
+      (order) => editOrder !== "" && order.id.includes(editOrder.orderId)
+    )
+);
 
 const isInRange = (min, max, value) => {
   const minValue = min || 0;

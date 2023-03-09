@@ -18,9 +18,15 @@ import { ReactComponent as IconPencil } from "icons/pencil.svg";
 import { ReactComponent as IconBin } from "icons/bin.svg";
 import { ReactComponent as IconArrow } from "icons/v_arrow.svg";
 import cn from "classnames";
-import { TableHeader, TableBody, TableFooter, TableRow } from "./components";
+import {
+  TableHeader,
+  TableBody,
+  TableFooter,
+  TableRow,
+  OrderForm,
+} from "./components";
 import { orderFiltersSelector } from "store/selectors/orderFilters";
-import { getOrders } from "store/selectors/orderList";
+import { getOrderForEdit, getOrders } from "store/selectors/orderList";
 import { toggleFilters } from "store/actionCreators/toggleFilters";
 import {
   setSearch,
@@ -49,11 +55,16 @@ import {
 } from "store/actionCreators/setSorting";
 import { xor } from "helpers/helpers";
 import styles from "./OrderPage.module.css";
+import {
+  setEditOrder,
+  setIsEditFormActive,
+} from "store/actionCreators/setEditOrder";
 
 export const OrderPage = ({ className }) => {
   const dispatch = useDispatch();
   const { search } = useSelector(orderFiltersSelector);
   const { key, direction } = useSelector(getSorting);
+  const editOrder = useSelector(getOrderForEdit);
   const orders = useSelector(getOrders);
   const { isFiltersVisible } = useSelector(toggleFiltersSelector);
   const { selectedOrders, isAllOrdersSelected } =
@@ -131,6 +142,11 @@ export const OrderPage = ({ className }) => {
     selectedOrders.forEach((id) => dispatch(setOrders(id)));
     dispatch(setSelectedOrders(""));
     setShowDeleteDropdown(false);
+  };
+
+  const handleSetEditOrder = (id) => {
+    dispatch(setEditOrder(id));
+    dispatch(setIsEditFormActive());
   };
 
   useEffect(() => {
@@ -256,13 +272,13 @@ export const OrderPage = ({ className }) => {
                   className={styles.dropdownLabel}
                   control={
                     <Checkbox
-                      checked={isChecked.includes("Расчет")}
+                      checked={isChecked.includes("Рассчет")}
                       onChange={handleSetSelectedStatus}
                       withIcon={true}
-                      value="Расчет"
+                      value="Рассчет"
                     />
                   }
-                  label="Расчет"
+                  label="Рассчет"
                 />
                 <ControlLabel
                   className={styles.dropdownLabel}
@@ -406,7 +422,11 @@ export const OrderPage = ({ className }) => {
         </TableHeader>
         <TableBody>
           {orders.map((order) => (
-            <TableRow key={order.id}>
+            <TableRow
+              className={styles.row}
+              key={order.id}
+              onClick={() => handleSetEditOrder(order.id)}
+            >
               <TableCell>
                 <Checkbox
                   checked={selectedOrders.includes(`${order.id}`)}
@@ -496,6 +516,7 @@ export const OrderPage = ({ className }) => {
           </div>
         </TableFooter>
       </div>
+      <OrderForm order={editOrder}></OrderForm>
     </div>
   );
 };

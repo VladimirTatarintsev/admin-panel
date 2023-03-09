@@ -5,6 +5,7 @@ import { toggleFilters } from "./toggleFilters";
 import { selectedOrders } from "./selectedOrders";
 import { pagination } from "./pagination";
 import { sorting } from "./sorting";
+import { editOrder } from "./editOrder";
 
 export default combineReducers({
   orderList,
@@ -13,4 +14,5 @@ export default combineReducers({
   selectedOrders,
   pagination,
   sorting,
+  editOrder,
 });

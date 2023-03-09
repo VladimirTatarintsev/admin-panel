@@ -1,0 +1,95 @@
+.formContainerBackground {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: all 0.5s;
+}
+.hideForm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: -5;
+  top: 0;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  background-color: #fff;
+  position: fixed;
+  top: 0.75rem;
+  right: 2.875rem;
+  transform: translateX(0%);
+  transition: all 0.3s;
+}
+.hideFormConteiner {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  background-color: #fff;
+  position: fixed;
+  top: 0.75rem;
+  right: 3rem;
+  transform: translateX(100%);
+  transition: all 0.3s;
+}
+.formHeader {
+  display: flex;
+  background-color: #459df5;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.formTitle {
+  line-height: 1.75rem;
+  font-size: 1.375rem;
+  color: #bad8f5;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 0;
+}
+.formInputs:last-child .area {
+  margin-bottom: 4rem;
+}
+.area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.label {
+  margin-bottom: 0.5rem;
+}
+.orderTable {
+  height: 8rem;
+  margin-bottom: 2rem;
+}
+.tableHeader {
+  height: 2rem;
+}
+.tableFooter {
+  position: static;
+  height: 2rem;
+  justify-content: flex-end;
+  color: black;
+}
+.formFooter {
+  margin-bottom: 1rem;
+}
