@@ -53,7 +53,7 @@ export const OrderForm = ({ order }) => {
             <TableHeader className={styles.tableHeader}></TableHeader>
             <TableBody></TableBody>
             <TableFooter className={styles.tableFooter}>
-              {`Итоговая сумма: ${order?.sum} ₽`}
+              {`Итоговая сумма: ${order?.sum === "-" ? "0" : order.sum} ₽`}
             </TableFooter>
           </div>
           <div className={styles.formInputs}>
