@@ -1,19 +1,17 @@
 .wrapper {
-  padding: 1rem 3rem 0px;
+  padding: 3rem;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
   position: relative;
   font-size: 13px;
-  height: 800px;
   max-width: 1500px;
+  flex: 1 1 auto;
 }
 .title {
   margin-bottom: 2rem;
   height: 2rem;
   display: flex;
   justify-content: space-between;
-  position: relative;
 }
 
 .text {

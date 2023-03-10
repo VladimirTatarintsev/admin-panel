@@ -8,6 +8,7 @@ export const Input = ({
   type = "text",
   placeholder = "Введите",
   value,
+  defaultValue,
   className,
   name = "",
   isError = false,
@@ -34,6 +35,7 @@ export const Input = ({
         name={name}
         placeholder={placeholder}
         value={value}
+        defaultValue={defaultValue}
         onChange={onChange}
         disabled={disabled}
         {...props}

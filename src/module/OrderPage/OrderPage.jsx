@@ -64,6 +64,7 @@ export const OrderPage = ({ className }) => {
   const dispatch = useDispatch();
   const { search } = useSelector(orderFiltersSelector);
   const { key, direction } = useSelector(getSorting);
+
   const editOrder = useSelector(getOrderForEdit);
   const orders = useSelector(getOrders);
   const { isFiltersVisible } = useSelector(toggleFiltersSelector);
@@ -370,6 +371,7 @@ export const OrderPage = ({ className }) => {
           </div>
         )}
       </div>
+      <OrderForm order={editOrder}></OrderForm>
       <div className={styles.table}>
         <TableHeader>
           <TableCell>
@@ -516,7 +518,6 @@ export const OrderPage = ({ className }) => {
           </div>
         </TableFooter>
       </div>
-      <OrderForm order={editOrder}></OrderForm>
     </div>
   );
 };
