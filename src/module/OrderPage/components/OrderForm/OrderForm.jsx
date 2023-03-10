@@ -113,7 +113,7 @@ export const OrderForm = ({ order }) => {
             </TableHeader>
             <TableBody className={styles.tableBody}>
               {order.goods.map(({ article, title, price }) => (
-                <TableRow className={styles.tableRow}>
+                <TableRow className={styles.tableRow} key={article}>
                   <TableCell className={styles.cell}>{article}</TableCell>
                   <TableCell className={styles.cell}>{title}</TableCell>
                   <TableCell className={styles.cell}>{price} ₽</TableCell>

@@ -26,7 +26,7 @@ const initialState = [
     fullName: "Филиппов Киркор Бедросович",
     goods: [
       {
-        article: "rt.2806",
+        article: "rt.2876",
         title: "Газонокосилка Apple Magic Grass Remover",
         price: "98003",
       },
@@ -42,7 +42,7 @@ const initialState = [
     fullName: "Тихонова Алина Давидовна",
     goods: [
       {
-        article: "rt.2806",
+        article: "rt.17504",
         title: "Газонокосилка Apple Magic Grass Remover",
         price: "3800",
       },
@@ -58,7 +58,7 @@ const initialState = [
     fullName: "Александрова Юлия Никитична",
     goods: [
       {
-        article: "rt.2806",
+        article: "al.2806",
         title: "Газонокосилка Apple Magic Grass Remover",
         price: "5700",
       },
@@ -74,7 +74,7 @@ const initialState = [
     fullName: "Андрей Малахов",
     goods: [
       {
-        article: "rt.2806",
+        article: "al.33946",
         title: "Газонокосилка Apple Magic Grass Remover",
         price: "-",
       },
@@ -90,7 +90,7 @@ const initialState = [
     fullName: "Судакова Анастасия Ильинична",
     goods: [
       {
-        article: "rt.2806",
+        article: "rt.0534",
         title: "Газонокосилка Apple Magic Grass Remover",
         price: "20500",
       },
@@ -106,7 +106,7 @@ const initialState = [
     fullName: "Зверева Арина Николаевна",
     goods: [
       {
-        article: "rt.2806",
+        article: "al.9721",
         title: "Газонокосилка Apple Magic Grass Remover",
         price: "1399",
       },
@@ -122,7 +122,7 @@ const initialState = [
     fullName: "Карташов Максим Кириллович",
     goods: [
       {
-        article: "rt.2806",
+        article: "al.00341",
         title: "Газонокосилка Apple Magic Grass Remover",
         price: "117810",
       },
@@ -138,7 +138,7 @@ const initialState = [
     fullName: "Васильев Вадим Даниилович",
     goods: [
       {
-        article: "rt.2806",
+        article: "rt.65248",
         title: "Газонокосилка Apple Magic Grass Remover",
         price: "17008",
       },
@@ -154,7 +154,7 @@ const initialState = [
     fullName: "София Ротару",
     goods: [
       {
-        article: "rt.2806",
+        article: "rt.9864",
         title: "Газонокосилка Apple Magic Grass Remover",
         price: "-",
       },
@@ -169,7 +169,7 @@ const initialState = [
     fullName: "София Ротару2",
     goods: [
       {
-        article: "rt.2806",
+        article: "rt.02806",
         title: "Газонокосилка Apple Magic Grass Remover",
         price: "13800",
       },
