@@ -35,11 +35,11 @@ export const OrderForm = ({ order }) => {
 
   useEffect(() => {
     setValue({
-      orderName: order.fullName,
-      status: order.status,
+      orderName: order?.fullName,
+      status: order?.status,
       confirmationCode: "000",
     });
-    setDropdownRadio(`${order.status}`);
+    setDropdownRadio(`${order?.status}`);
   }, [order]);
 
   const handleChangeDropdownRadio = ({ target: { value } }) => {
@@ -112,7 +112,7 @@ export const OrderForm = ({ order }) => {
               <TableCell className={styles.cell}>Цена</TableCell>
             </TableHeader>
             <TableBody className={styles.tableBody}>
-              {order.goods.map(({ article, title, price }) => (
+              {order?.goods.map(({ article, title, price }) => (
                 <TableRow className={styles.tableRow} key={article}>
                   <TableCell className={styles.cell}>{article}</TableCell>
                   <TableCell className={styles.cell}>{title}</TableCell>
@@ -121,7 +121,7 @@ export const OrderForm = ({ order }) => {
               ))}
             </TableBody>
             <TableFooter className={styles.tableFooter}>
-              {`Итоговая сумма: ${order?.sum === "-" ? "0" : order.sum} ₽`}
+              {`Итоговая сумма: ${order?.sum === "-" ? "0" : order?.sum} ₽`}
             </TableFooter>
           </div>
           <div className={styles.formInputs}>
