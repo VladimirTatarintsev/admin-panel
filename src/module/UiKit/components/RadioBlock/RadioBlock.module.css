@@ -1,0 +1,10 @@
+.radioBlock {
+  width: 6.5rem;
+  height: 4rem;
+  border: 1px dashed #8055ff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

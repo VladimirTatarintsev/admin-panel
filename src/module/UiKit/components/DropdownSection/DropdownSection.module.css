@@ -1,0 +1,12 @@
+.dropdownSection {
+  display: flex;
+  align-items: flex-start;
+  flex: 1 1 auto;
+  line-height: 1rem;
+}
+.dropdownSectionTop {
+  margin-bottom: 6rem;
+}
+.dropdownSectionTop:nth-last-child(1) {
+  margin-bottom: 0;
+}
