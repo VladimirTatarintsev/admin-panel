@@ -1,0 +1,150 @@
+.formContainerBackground {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: all 0.3s;
+}
+.hideForm {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  z-index: -5;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.3s;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  background-color: #fff;
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  transform: translateX(0%);
+  transition: all 0.3s;
+}
+.hideFormConteiner {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  background-color: #fff;
+  position: fixed;
+  bottom: 3rem;
+  right: 3rem;
+  transform: translateX(100%);
+  transition: all 0.3s;
+}
+.formHeader {
+  display: flex;
+  background-color: #459df5;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.formTitle {
+  line-height: 1.75rem;
+  font-size: 1.5rem;
+  color: #bad8f5;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 1rem 0;
+}
+.formDarkMode {
+  background: #2b2d33;
+}
+.formInputsDarkMode {
+  color: #bcc4cc;
+}
+.area {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.statusArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 1rem;
+  width: 100%;
+  position: relative;
+}
+.dropdownBlock {
+  padding: 0.5rem 1rem;
+  position: absolute;
+  z-index: 5;
+  left: 0;
+  bottom: 2.5rem;
+}
+.dropdownDarkMode {
+  background: #2b2d33;
+  color: #bcc4cc;
+}
+.dropdownLabel {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+.label {
+  margin-bottom: 0.5rem;
+}
+.orderTable {
+  height: 9rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.tableHeader {
+  height: 2rem;
+}
+.cell:nth-child(1) {
+  flex: 0 0 25%;
+}
+.cell:nth-child(2) {
+  flex: 0 0 50%;
+}
+
+.tableFooter {
+  height: 2rem;
+  justify-content: flex-end;
+  color: black;
+}
+.tableBody {
+  min-height: 0;
+  height: 100%;
+}
+.tableRow {
+  padding: 0;
+}
+.tableBody .cell {
+  line-height: 1rem;
+  padding: 0.5rem 1rem;
+}
+.formFooter {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.tableFooterDark {
+  height: 2rem;
+  justify-content: flex-end;
+  color: #bcc4cc;
+}

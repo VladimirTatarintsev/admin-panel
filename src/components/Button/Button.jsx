@@ -1,5 +1,5 @@
 import cn from "classnames";
-import { capitalize } from "helpers/capitalize";
+import { capitalize } from "helpers/helpers";
 import styles from "./Button.module.css";
 
 export const Button = ({
@@ -9,6 +9,7 @@ export const Button = ({
   children,
   className,
   fullWidth,
+  onClick,
 }) => {
   const buttonClass = cn(styles.button, className, {
     [styles[`color${capitalize(color)}`]]: true,
@@ -17,7 +18,7 @@ export const Button = ({
     [styles.buttonFullWidth]: fullWidth,
   });
   return (
-    <button className={buttonClass}>
+    <button className={buttonClass} onClick={onClick}>
       {Icon && <Icon className={styles.icon} />}
       {children && <span className={styles.text}>{children}</span>}
     </button>

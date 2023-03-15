@@ -52,7 +52,9 @@ body {
 .dropdownSectionTop .dropdownBlock {
   padding: 0.5rem 0;
 }
-
+.dropdownBlock {
+  margin-right: 3rem;
+}
 .label {
   margin-bottom: 0.5rem;
   width: 100%;

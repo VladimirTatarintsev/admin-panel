@@ -1,0 +1,10 @@
+.row {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  cursor: pointer;
+}
+.row:hover {
+  background-color: #cccccc80;
+}

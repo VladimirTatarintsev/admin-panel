@@ -1,0 +1,21 @@
+html,
+body {
+  font-family: "Ubuntu", sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+.appContainer {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 3rem;
+}
+
+.darkTheme {
+  background-color: #2b2d33f6;
+}
+
+.app {
+  display: flex;
+  justify-content: center;
+}

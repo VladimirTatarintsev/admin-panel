@@ -1,0 +1,178 @@
+.wrapper {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  font-size: 13px;
+  max-width: 1500px;
+  flex: 1 1 auto;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.darkMode {
+  background-color: #2b2d33;
+}
+.title {
+  margin-bottom: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text {
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 2rem;
+  letter-spacing: 0.2px;
+  color: #000;
+}
+.textDarkMode {
+  color: #bcc4cc;
+}
+.filters {
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+}
+.search {
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+}
+.itemGroup {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 20rem !important;
+}
+
+.selectInput {
+  width: 12rem;
+  display: flex;
+  align-items: center;
+}
+.filterButton {
+  margin: 0 1rem 0 1rem;
+}
+
+.filterPanel {
+  display: flex;
+  padding: 1rem;
+  height: 5.5rem;
+  box-sizing: border-box;
+  background: #ebf0f5;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+.filterPanelDark {
+  background: #171b1f;
+  color: #bcc4cc;
+}
+.area {
+  position: relative;
+  margin-right: 1rem;
+}
+.area:nth-child(2) {
+  flex: 1 0 auto;
+}
+.area:nth-child(2) input {
+  width: 100%;
+}
+.area:last-child {
+  display: flex;
+  align-items: flex-end;
+  flex: 1 1 40%;
+}
+.label {
+  margin-bottom: 0.5rem;
+  width: 100%;
+  line-height: 0.5rem;
+}
+.dropdownBlock {
+  z-index: 2;
+  position: relative;
+  background-color: #fff;
+  padding: 0.5rem 0;
+  margin-left: 2rem;
+  margin-top: 0.25rem;
+}
+.dropdownLabel {
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+}
+.dropdownDarkMode {
+  background: #2b2d33;
+}
+.container {
+  display: flex;
+}
+.dateInput {
+  width: 8.875rem;
+}
+.dateInput:nth-child(1) {
+  margin-right: 0.25rem;
+}
+.sumInput {
+  width: 7.875rem;
+}
+.sumInput:nth-child(1) {
+  margin-right: 0.25rem;
+}
+.table {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+.headerCell Label {
+  pointer-events: none;
+}
+.row .cell:not(:first-child) {
+  pointer-events: none;
+}
+.headerCell {
+  color: #fff;
+}
+.cell {
+  color: #000;
+}
+.optionBtnsContainer {
+  display: flex;
+}
+.optionButton {
+  margin-left: 1rem;
+}
+.optionButtonWrap {
+  position: relative;
+}
+.deleteDropdown {
+  position: absolute;
+  z-index: 2;
+  left: 1rem;
+  top: -7.5rem;
+}
+.dropdownBlockButton {
+  margin-bottom: 0.5rem;
+}
+.footerDark {
+  background: #171b1f;
+}
+.footerSection {
+  display: flex;
+}
+.pagination {
+  display: flex;
+}
+.pageBtn {
+  margin-right: 0.25rem;
+}
+
+.currentPage {
+  background-color: #459df5;
+  color: #fff;
+}

@@ -11,6 +11,7 @@
   box-sizing: border-box;
   border-radius: 4px;
   padding: 8px 4px 8px 8px;
+  background: transparent;
 }
 .field:focus {
   box-shadow: 0 0 5px rgb(0, 0, 0, 0.3);
@@ -31,7 +32,7 @@
   background: inherit;
   position: absolute;
   display: flex;
-  right: 8px;
+  right: 0.5rem;
   padding: 0;
 }
 .iconLocked {
@@ -51,13 +52,25 @@
   left: 9.5px;
   stroke: #459df5;
 }
+.text {
+  position: absolute;
+  left: 0.5rem;
+}
+.textInput {
+  padding: 8px 24px 8px 26px;
+}
 .buttonIcon {
   width: 1rem;
   height: 1rem;
-  stroke: #bad8f5;
+  stroke: #86c2fa;
+  fill: #86c2fa;
+  pointer-events: none;
 }
 .fieldDisabled {
   background: #bad8f5;
   color: #000;
   padding: 8px 32px 8px 8px;
+}
+.darkMode {
+  color: #bcc4cc;
 }

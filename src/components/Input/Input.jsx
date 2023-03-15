@@ -1,23 +1,32 @@
 import cn from "classnames";
 import styles from "./Input.module.css";
-import { ReactComponent as IconXMedium } from "../../icons/x-medium.svg";
-import { ReactComponent as IconLocked } from "../../icons/locked.svg";
+
+import { ReactComponent as IconLocked } from "icons/locked.svg";
 
 export const Input = ({
   id,
   type = "text",
   placeholder = "Введите",
+  value,
   defaultValue,
   className,
+  darkMode,
+  name = "",
   isError = false,
   disabled = false,
   iconInput: IconInput,
+  iconRight: IconRight,
   onChange,
+  onClick,
+  text = "",
+  ...props
 }) => {
   const inputClass = cn(styles.field, className, {
     [styles.iconInput]: IconInput,
+    [styles.textInput]: text,
     [styles.fieldIncorrect]: isError,
     [styles.fieldDisabled]: disabled,
+    [styles.darkMode]: darkMode,
   });
   return (
     <div className={styles.input}>
@@ -25,20 +34,24 @@ export const Input = ({
         className={inputClass}
         type={type}
         id={id}
+        name={name}
         placeholder={placeholder}
+        value={value}
         defaultValue={defaultValue}
         onChange={onChange}
         disabled={disabled}
+        {...props}
       />
       {IconInput && <IconInput className={styles.searchIconInput} />}
 
-      {defaultValue && (
-        <button className={styles.button}>
-          <IconXMedium className={styles.buttonIcon} />
+      {value && (
+        <button onClick={onClick} className={styles.button} name={name}>
+          <IconRight className={styles.buttonIcon} />
         </button>
       )}
 
       {disabled && <IconLocked className={styles.iconLocked} />}
+      {text && <span className={styles.text}>{text}</span>}
     </div>
   );
 };
