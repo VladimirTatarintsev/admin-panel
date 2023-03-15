@@ -10,6 +10,7 @@ export const Input = ({
   value,
   defaultValue,
   className,
+  darkMode,
   name = "",
   isError = false,
   disabled = false,
@@ -25,6 +26,7 @@ export const Input = ({
     [styles.textInput]: text,
     [styles.fieldIncorrect]: isError,
     [styles.fieldDisabled]: disabled,
+    [styles.darkMode]: darkMode,
   });
   return (
     <div className={styles.input}>

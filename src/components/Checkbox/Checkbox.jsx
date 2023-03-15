@@ -7,8 +7,11 @@ export const Checkbox = ({
   onChange = () => {},
   value = "",
   withIcon = true,
+  darkMode,
 }) => {
-  const checkboxClass = cn(styles.checkboxWrapper, className);
+  const checkboxClass = cn(styles.checkboxWrapper, className, {
+    [styles.darkMode]: darkMode,
+  });
   return (
     <div className={checkboxClass}>
       <label className={styles.label}>

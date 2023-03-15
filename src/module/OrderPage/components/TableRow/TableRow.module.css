@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   height: 2.5rem;
-  border: 1px solid #ebf0f5;
   cursor: pointer;
 }
 .row:hover {

@@ -11,19 +11,28 @@
   pointer-events: none;
   transform: rotate(180deg);
 }
+
 .cell {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex: 1 1 0;
   padding: 0.75rem 0.5rem;
-  color: #fff;
   user-select: none;
 }
 .sortBtn {
   display: flex;
   align-items: center;
   cursor: pointer;
+}
+.headerCellDarkMode {
+  color: #171b1f !important;
+}
+.darkMode {
+  color: #bcc4cc;
+}
+.headerCellDarkMode svg {
+  fill: #171b1f;
 }
 .cell:nth-child(1) {
   flex: 0 1 0;

@@ -35,3 +35,36 @@
 .label > .checkbox:checked + .customCheckbox {
   color: #459df5;
 }
+
+.darkMode .label > .checkbox {
+  z-index: -1;
+  opacity: 0;
+  position: absolute;
+}
+.darkMode .label > .customCheckbox {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+.darkMode .label > .customCheckbox::before {
+  content: "";
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #454e52;
+  border-radius: 2px;
+  background-color: #2b2d33;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 110%;
+  box-sizing: border-box;
+}
+.darkMode .label > .checkbox:checked + .customCheckbox::before {
+  border-color: #459df5;
+  box-shadow: 0px 0px 2px 1px #fff;
+  background-color: #459df5;
+  background-image: url(../../icons/checkmark.svg);
+}
+.darkMode .label > .checkbox:checked + .customCheckbox {
+  color: #459df5;
+}

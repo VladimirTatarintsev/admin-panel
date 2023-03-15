@@ -2,10 +2,16 @@
   padding: 3rem;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   position: relative;
   font-size: 13px;
   max-width: 1500px;
   flex: 1 1 auto;
+  background-color: #fff;
+  border-radius: 5px;
+}
+.darkMode {
+  background-color: #2b2d33;
 }
 .title {
   margin-bottom: 2rem;
@@ -20,6 +26,9 @@
   line-height: 2rem;
   letter-spacing: 0.2px;
   color: #000;
+}
+.textDarkMode {
+  color: #bcc4cc;
 }
 .filters {
   margin-bottom: 2rem;
@@ -38,7 +47,7 @@
 }
 
 .input {
-  width: 20rem;
+  width: 20rem !important;
 }
 
 .selectInput {
@@ -59,10 +68,19 @@
   border-radius: 4px;
   margin-top: 0.5rem;
 }
-
+.filterPanelDark {
+  background: #171b1f;
+  color: #bcc4cc;
+}
 .area {
   position: relative;
   margin-right: 1rem;
+}
+.area:nth-child(2) {
+  flex: 1 0 auto;
+}
+.area:nth-child(2) input {
+  width: 100%;
 }
 .area:last-child {
   display: flex;
@@ -87,6 +105,9 @@
   height: 2rem;
   display: flex;
   align-items: center;
+}
+.dropdownDarkMode {
+  background: #2b2d33;
 }
 .container {
   display: flex;
@@ -114,6 +135,9 @@
 .row .cell:not(:first-child) {
   pointer-events: none;
 }
+.headerCell {
+  color: #fff;
+}
 .cell {
   color: #000;
 }
@@ -135,24 +159,19 @@
 .dropdownBlockButton {
   margin-bottom: 0.5rem;
 }
+.footerDark {
+  background: #171b1f;
+}
 .footerSection {
   display: flex;
 }
 .pagination {
   display: flex;
 }
-.pageNum {
-  font-size: 0.75rem;
-  height: 1.5rem;
-  width: 1.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 4px;
-  color: #459df5;
-  cursor: pointer;
+.pageBtn {
   margin-right: 0.25rem;
 }
+
 .currentPage {
   background-color: #459df5;
   color: #fff;

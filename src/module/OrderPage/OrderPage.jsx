@@ -17,7 +17,7 @@ import { ReactComponent as IconFilter } from "icons/filter.svg";
 import { ReactComponent as IconPencil } from "icons/pencil.svg";
 import { ReactComponent as IconBin } from "icons/bin.svg";
 import { ReactComponent as IconArrow } from "icons/v_arrow.svg";
-import cn from "classnames";
+import { ReactComponent as IconMoon } from "icons/moon.svg";
 import {
   TableHeader,
   TableBody,
@@ -54,23 +54,26 @@ import {
   setSortDirection,
 } from "store/actionCreators/setSorting";
 import { xor } from "helpers/helpers";
-import styles from "./OrderPage.module.css";
 import {
   setEditOrder,
   setIsEditFormActive,
 } from "store/actionCreators/setEditOrder";
+import { toggleThemeSelector } from "store/selectors/toggleTheme";
+import { toggleTheme } from "store/actionCreators/toggleTheme";
+import styles from "./OrderPage.module.css";
 
-export const OrderPage = ({ className }) => {
+export const OrderPage = () => {
   const dispatch = useDispatch();
   const { search } = useSelector(orderFiltersSelector);
   const { key, direction } = useSelector(getSorting);
-
   const editOrder = useSelector(getOrderForEdit);
   const orders = useSelector(getOrders);
   const { isFiltersVisible } = useSelector(toggleFiltersSelector);
   const { selectedOrders, isAllOrdersSelected } =
     useSelector(getSelectedOrders);
   const { currentPage, pages } = useSelector(getOrderPages);
+  const { isDarkModeOn } = useSelector(toggleThemeSelector);
+
   const [isChecked, setIsChecked] = useState([]);
   const [filters, setFilters] = useState({
     dateFromFilter: "",
@@ -81,6 +84,7 @@ export const OrderPage = ({ className }) => {
   });
   const [showDropdown, setShowDropdown] = useState(false);
   const [showDeleteDropdown, setShowDeleteDropdown] = useState(false);
+
   const handleSetCurrentPage = (page) => dispatch(setPagination(page));
   const handleChangeSearchInput = ({ target: { value } }) => {
     dispatch(setSearch({ value }));
@@ -149,6 +153,9 @@ export const OrderPage = ({ className }) => {
     dispatch(setEditOrder(id));
     dispatch(setIsEditFormActive());
   };
+  const handleSwitchTheme = () => {
+    dispatch(toggleTheme());
+  };
 
   useEffect(() => {
     if (orders.length === 0) {
@@ -160,14 +167,36 @@ export const OrderPage = ({ className }) => {
 
   return (
     <div
-      className={cn(styles.wrapper, className)}
+      className={`${[styles.wrapper]} ${isDarkModeOn ? [styles.darkMode] : ""}`}
       onClick={() => setShowDropdown(false)}
     >
       <div className={styles.title}>
-        <span className={styles.text}>Список заказов</span>
-        <Button icon={IconSun} color="secondary" size="large">
-          Светлая тема
-        </Button>
+        <span
+          className={`${[styles.text]} ${
+            isDarkModeOn && [styles.textDarkMode]
+          }`}
+        >
+          Список заказов
+        </span>
+        {isDarkModeOn ? (
+          <Button
+            icon={IconMoon}
+            color="secondary"
+            size="large"
+            onClick={handleSwitchTheme}
+          >
+            Тёмная тема
+          </Button>
+        ) : (
+          <Button
+            icon={IconSun}
+            color="secondary"
+            size="large"
+            onClick={handleSwitchTheme}
+          >
+            Светлая тема
+          </Button>
+        )}
       </div>
 
       <div className={styles.filters}>
@@ -182,6 +211,7 @@ export const OrderPage = ({ className }) => {
               placeholder="Номер заказа или ФИО"
               onChange={handleChangeSearchInput}
               onClick={handleClearSearchInput}
+              darkMode={isDarkModeOn}
             />
             <Button
               className={styles.filterButton}
@@ -189,7 +219,7 @@ export const OrderPage = ({ className }) => {
                 dispatch(toggleFilters());
               }}
               icon={IconFilter}
-              color="primary"
+              color={`${isDarkModeOn ? "primaryDarkMode" : "primary"}`}
               size="large"
             >
               Фильтры
@@ -209,7 +239,11 @@ export const OrderPage = ({ className }) => {
           </Button>
         </div>
         {isFiltersVisible && (
-          <div className={styles.filterPanel}>
+          <div
+            className={`${[styles.filterPanel]} ${
+              isDarkModeOn && [styles.filterPanelDark]
+            }`}
+          >
             <div className={styles.area}>
               <Label className={styles.label} htmlFor="date">
                 Дата оформления
@@ -219,22 +253,24 @@ export const OrderPage = ({ className }) => {
                   className={styles.dateInput}
                   text="с"
                   id="date"
-                  placeholder="dd.mm.dddd"
+                  placeholder="dd.mm.yyyy"
                   name="dateFromFilter"
                   value={filters.dateFromFilter}
                   iconRight={IconXMedium}
                   onChange={handleChangeAdditionFilters}
                   onClick={handleClearActiveAdditionInput}
+                  darkMode={isDarkModeOn}
                 />
                 <Input
                   className={styles.dateInput}
                   text="по"
                   name="dateToFilter"
-                  placeholder="dd.mm.dddd"
+                  placeholder="dd.mm.yyyy"
                   value={filters.dateToFilter}
                   iconRight={IconXMedium}
                   onChange={handleChangeAdditionFilters}
                   onClick={handleClearActiveAdditionInput}
+                  darkMode={isDarkModeOn}
                 />
               </div>
             </div>
@@ -252,9 +288,12 @@ export const OrderPage = ({ className }) => {
                 onClick={handleClickShowDropdown}
                 placeholder="Нажмите для выбора"
                 readOnly
+                darkMode={isDarkModeOn}
               />
               <Dropdown
-                className={styles.dropdownBlock}
+                className={`${styles.dropdownBlock} ${
+                  isDarkModeOn && [styles.dropdownDarkMode]
+                }`}
                 isDropdownVisible={showDropdown}
               >
                 <ControlLabel
@@ -265,6 +304,7 @@ export const OrderPage = ({ className }) => {
                       onChange={handleSetSelectedStatus}
                       withIcon={true}
                       value="Новый"
+                      darkMode={isDarkModeOn}
                     />
                   }
                   label="Новый"
@@ -277,6 +317,7 @@ export const OrderPage = ({ className }) => {
                       onChange={handleSetSelectedStatus}
                       withIcon={true}
                       value="Рассчет"
+                      darkMode={isDarkModeOn}
                     />
                   }
                   label="Рассчет"
@@ -289,6 +330,7 @@ export const OrderPage = ({ className }) => {
                       onChange={handleSetSelectedStatus}
                       withIcon={true}
                       value="Подтвержден"
+                      darkMode={isDarkModeOn}
                     />
                   }
                   label="Подтвержден"
@@ -301,6 +343,7 @@ export const OrderPage = ({ className }) => {
                       onChange={handleSetSelectedStatus}
                       withIcon={true}
                       value="Отложен"
+                      darkMode={isDarkModeOn}
                     />
                   }
                   label="Отложен"
@@ -313,6 +356,7 @@ export const OrderPage = ({ className }) => {
                       onChange={handleSetSelectedStatus}
                       withIcon={true}
                       value="Выполнен"
+                      darkMode={isDarkModeOn}
                     />
                   }
                   label="Выполнен"
@@ -325,6 +369,7 @@ export const OrderPage = ({ className }) => {
                       onChange={handleSetSelectedStatus}
                       withIcon={true}
                       value="Отменен"
+                      darkMode={isDarkModeOn}
                     />
                   }
                   label="Отменен"
@@ -346,6 +391,7 @@ export const OrderPage = ({ className }) => {
                   placeholder="₽"
                   onChange={handleChangeAdditionFilters}
                   onClick={handleClearActiveAdditionInput}
+                  darkMode={isDarkModeOn}
                 />
                 <Input
                   className={styles.sumInput}
@@ -356,6 +402,7 @@ export const OrderPage = ({ className }) => {
                   placeholder="₽"
                   onChange={handleChangeAdditionFilters}
                   onClick={handleClearActiveAdditionInput}
+                  darkMode={isDarkModeOn}
                 />
               </div>
             </div>
@@ -378,6 +425,7 @@ export const OrderPage = ({ className }) => {
             <Checkbox
               checked={isAllOrdersSelected}
               onChange={handleSetIsAllOrdersSelected}
+              darkMode={isDarkModeOn}
             />
           </TableCell>
           <TableCell
@@ -385,6 +433,7 @@ export const OrderPage = ({ className }) => {
             icon={IconArrow}
             onClick={(e) => handleSetSort(e)}
             name="id"
+            headerCellDarkMode={isDarkModeOn}
           >
             id
           </TableCell>
@@ -393,6 +442,7 @@ export const OrderPage = ({ className }) => {
             icon={IconArrow}
             onClick={(e) => handleSetSort(e)}
             name="date"
+            headerCellDarkMode={isDarkModeOn}
           >
             Дата
           </TableCell>
@@ -401,6 +451,7 @@ export const OrderPage = ({ className }) => {
             icon={IconArrow}
             onClick={(e) => handleSetSort(e)}
             name="status"
+            headerCellDarkMode={isDarkModeOn}
           >
             Статус
           </TableCell>
@@ -409,6 +460,7 @@ export const OrderPage = ({ className }) => {
             icon={IconArrow}
             onClick={(e) => handleSetSort(e)}
             name="position"
+            headerCellDarkMode={isDarkModeOn}
           >
             Позиций
           </TableCell>
@@ -417,12 +469,18 @@ export const OrderPage = ({ className }) => {
             icon={IconArrow}
             onClick={(e) => handleSetSort(e)}
             name="sum"
+            headerCellDarkMode={isDarkModeOn}
           >
             Сумма
           </TableCell>
-          <TableCell className={styles.headerCell}>ФИО покупателя</TableCell>
+          <TableCell
+            className={styles.headerCell}
+            headerCellDarkMode={isDarkModeOn}
+          >
+            ФИО покупателя
+          </TableCell>
         </TableHeader>
-        <TableBody>
+        <TableBody darkMode={isDarkModeOn}>
           {orders.map((order) => (
             <TableRow
               className={styles.row}
@@ -434,27 +492,28 @@ export const OrderPage = ({ className }) => {
                   checked={selectedOrders.includes(`${order.id}`)}
                   onChange={handleSetSelectedOrders}
                   value={order.id}
+                  darkMode={isDarkModeOn}
                 />
               </TableCell>
-              <TableCell className={styles.cell}>{order.id}</TableCell>
-              <TableCell className={styles.cell}>{order.date}</TableCell>
-              <TableCell className={styles.cell}>{order.status}</TableCell>
-              <TableCell className={styles.cell}>{order.position}</TableCell>
-              <TableCell className={styles.cell}>
+              <TableCell darkMode={isDarkModeOn}>{order.id}</TableCell>
+              <TableCell darkMode={isDarkModeOn}>{order.date}</TableCell>
+              <TableCell darkMode={isDarkModeOn}>{order.status}</TableCell>
+              <TableCell darkMode={isDarkModeOn}>{order.position}</TableCell>
+              <TableCell darkMode={isDarkModeOn}>
                 {`${order.sum !== "-" ? order.sum + " ₽" : order.sum}`}
               </TableCell>
-              <TableCell className={styles.cell}>{order.fullName}</TableCell>
+              <TableCell darkMode={isDarkModeOn}>{order.fullName}</TableCell>
             </TableRow>
           ))}
         </TableBody>
-        <TableFooter>
+        <TableFooter className={`${isDarkModeOn && [styles.footerDark]}`}>
           <div className={styles.footerSection}>
             <span>{`Выбрано записей: ${selectedOrders?.length}`}</span>
             {!!selectedOrders.length && (
               <div className={styles.optionBtnsContainer}>
                 <Button
                   className={styles.optionButton}
-                  color="primary"
+                  color={`${isDarkModeOn ? "primaryDarkMode" : "primary"}`}
                   size="medium"
                   icon={IconPencil}
                 >
@@ -471,7 +530,9 @@ export const OrderPage = ({ className }) => {
                     Удалить
                   </Button>
                   <Dropdown
-                    className={styles.deleteDropdown}
+                    className={`${styles.deleteDropdown} ${
+                      isDarkModeOn && [styles.dropdownDarkMode]
+                    }`}
                     isDropdownVisible={showDeleteDropdown}
                   >
                     <Label
@@ -487,7 +548,7 @@ export const OrderPage = ({ className }) => {
                       Удалить
                     </Button>
                     <Button
-                      color="primary"
+                      color={`${isDarkModeOn ? "primaryDarkMode" : "primary"}`}
                       size="medium"
                       fullWidth
                       onClick={(e) => {
@@ -504,15 +565,15 @@ export const OrderPage = ({ className }) => {
           <div className={styles.footerSection}>
             <div className={styles.pagination}>
               {pages?.map((page, index) => (
-                <span
-                  className={`${[styles.pageNum]} ${
-                    currentPage === page ? [styles.currentPage] : ""
-                  }`}
+                <Button
+                  className={styles.pageBtn}
                   key={index}
+                  size="medium"
+                  color={`${currentPage === page ? "primary" : "secondary"}`}
                   onClick={() => handleSetCurrentPage(page)}
                 >
                   {page}
-                </span>
+                </Button>
               ))}
             </div>
           </div>

@@ -10,12 +10,17 @@ export const TableCell = ({
   icon: Icon,
   onClick,
   name,
+  darkMode,
   iconLeft: IconLeft,
+  headerCellDarkMode,
 }) => {
   const { key, direction } = useSelector(getSorting);
   return (
     <div
-      className={cn(styles.cell, className)}
+      className={cn(styles.cell, className, {
+        [styles.darkMode]: darkMode,
+        [styles.headerCellDarkMode]: headerCellDarkMode,
+      })}
       onClick={onClick}
       data-name={name}
     >

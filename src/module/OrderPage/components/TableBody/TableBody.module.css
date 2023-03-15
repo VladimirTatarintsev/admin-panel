@@ -1,5 +1,7 @@
 .body {
-  background: #fff;
   overflow-y: scroll;
   min-height: 400px;
+}
+.darkMode {
+  color: #bcc4cc;
 }
