@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   Button,
@@ -156,6 +156,17 @@ export const OrderPage = () => {
   const handleSwitchTheme = () => {
     dispatch(toggleTheme());
   };
+  const debounce = (func) => {
+    let timer;
+    return function (...args) {
+      if (timer) clearTimeout(timer);
+      timer = setTimeout(() => {
+        timer = null;
+        func.apply(this, args);
+      }, 500);
+    };
+  };
+  const optimizedFn = useCallback(debounce(handleChangeSearchInput), []);
 
   useEffect(() => {
     if (orders.length === 0) {
@@ -206,10 +217,9 @@ export const OrderPage = () => {
               iconInput={IconSearch}
               className={styles.input}
               name="search"
-              value={search}
               iconRight={IconXMedium}
               placeholder="Номер заказа или ФИО"
-              onChange={handleChangeSearchInput}
+              onChange={optimizedFn}
               onClick={handleClearSearchInput}
               darkMode={isDarkModeOn}
             />
