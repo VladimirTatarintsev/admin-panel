@@ -19,6 +19,10 @@
   background: #459df5;
   color: white;
 }
+.colorPrimaryDarkMode {
+  background: #459df5;
+  color: #171b1f;
+}
 .colorSecondary {
   color: #459df5;
   background: transparent;
@@ -56,6 +60,10 @@
 .sizeMedium ~ .iconOnly {
   padding: 0.25rem;
   height: 1.5rem;
+}
+.colorPrimaryDarkMode .icon {
+  stroke: #171b1f;
+  fill: #171b1f;
 }
 .colorPrimary .icon {
   stroke: #fff;

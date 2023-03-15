@@ -17,6 +17,7 @@ import { setIsEditFormActive } from "store/actionCreators/setEditOrder";
 import { getEditOrder } from "store/selectors/editOrder";
 import { ReactComponent as IconArrow } from "icons/v_arrow.svg";
 import { useState, useEffect } from "react";
+import { toggleThemeSelector } from "store/selectors/toggleTheme";
 
 export const OrderForm = ({ order }) => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ export const OrderForm = ({ order }) => {
   };
   const [showDropdown, setShowDropdown] = useState(false);
   const [dropdownRadio, setDropdownRadio] = useState("");
+  const { isDarkModeOn } = useSelector(toggleThemeSelector);
   const [value, setValue] = useState({
     orderName: "",
     status: "",
@@ -78,8 +80,14 @@ export const OrderForm = ({ order }) => {
             onClick={handleHideForm}
           />
         </div>
-        <div className={styles.form}>
-          <div className={styles.formInputs}>
+        <div
+          className={`${styles.form} ${isDarkModeOn && [styles.formDarkMode]}`}
+        >
+          <div
+            className={`${styles.formInputs} ${
+              isDarkModeOn && [styles.formInputsDarkMode]
+            }`}
+          >
             <div className={styles.area}>
               <Label className={styles.label} htmlFor="orderDate">
                 Дата и время заказа
@@ -102,29 +110,59 @@ export const OrderForm = ({ order }) => {
                 iconRight={ClearIcon}
                 onChange={handleChangeOrderSpec}
                 onClick={handleClearActiveInput}
+                darkMode={isDarkModeOn}
               />
             </div>
           </div>
           <div className={styles.orderTable}>
             <TableHeader className={styles.tableHeader}>
-              <TableCell className={styles.cell}>Артикул</TableCell>
-              <TableCell className={styles.cell}>Наименование</TableCell>
-              <TableCell className={styles.cell}>Цена</TableCell>
+              <TableCell
+                className={styles.cell}
+                headerCellDarkMode={isDarkModeOn}
+              >
+                Артикул
+              </TableCell>
+              <TableCell
+                className={styles.cell}
+                headerCellDarkMode={isDarkModeOn}
+              >
+                Наименование
+              </TableCell>
+              <TableCell
+                className={styles.cell}
+                headerCellDarkMode={isDarkModeOn}
+              >
+                Цена
+              </TableCell>
             </TableHeader>
             <TableBody className={styles.tableBody}>
               {order?.goods.map(({ article, title, price }) => (
                 <TableRow className={styles.tableRow} key={article}>
-                  <TableCell className={styles.cell}>{article}</TableCell>
-                  <TableCell className={styles.cell}>{title}</TableCell>
-                  <TableCell className={styles.cell}>{price} ₽</TableCell>
+                  <TableCell className={styles.cell} darkMode={isDarkModeOn}>
+                    {article}
+                  </TableCell>
+                  <TableCell className={styles.cell} darkMode={isDarkModeOn}>
+                    {title}
+                  </TableCell>
+                  <TableCell className={styles.cell} darkMode={isDarkModeOn}>
+                    {price} ₽
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
-            <TableFooter className={styles.tableFooter}>
+            <TableFooter
+              className={
+                isDarkModeOn ? [styles.tableFooterDark] : [styles.tableFooter]
+              }
+            >
               {`Итоговая сумма: ${order?.sum === "-" ? "0" : order?.sum} ₽`}
             </TableFooter>
           </div>
-          <div className={styles.formInputs}>
+          <div
+            className={`${styles.formInputs} ${
+              isDarkModeOn && [styles.formInputsDarkMode]
+            }`}
+          >
             <div className={styles.area}>
               <Label className={styles.label} htmlFor="orderLoyaltyLevel">
                 Уровень лояльности
@@ -144,11 +182,14 @@ export const OrderForm = ({ order }) => {
                 onClick={() => setShowDropdown(!showDropdown)}
                 onFocus={() => setShowDropdown(true)}
                 readOnly
+                darkMode={isDarkModeOn}
               />
               {showDropdown && (
                 <Dropdown
                   isDropdownVisible={showDropdown}
-                  className={styles.dropdownBlock}
+                  className={`${styles.dropdownBlock} ${
+                    isDarkModeOn && [styles.dropdownDarkMode]
+                  }`}
                 >
                   <ControlLabel
                     className={styles.dropdownLabel}
@@ -243,11 +284,16 @@ export const OrderForm = ({ order }) => {
                 id="confirmationCode"
                 onChange={handleChangeOrderSpec}
                 onClick={handleClearActiveInput}
+                darkMode={isDarkModeOn}
               />
             </div>
           </div>
           <div className={styles.formFooter}>
-            <Button color="primary" size="large" icon={Checkmark}>
+            <Button
+              color={`${isDarkModeOn ? "primaryDarkMode" : "primary"}`}
+              size="large"
+              icon={Checkmark}
+            >
               Сохранить
             </Button>
           </div>

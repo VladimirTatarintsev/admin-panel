@@ -1,6 +1,6 @@
 .formContainerBackground {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   justify-content: flex-end;
   position: absolute;
@@ -64,6 +64,12 @@
   flex-direction: column;
   padding: 1rem 1rem 0;
 }
+.formDarkMode {
+  background: #2b2d33;
+}
+.formInputsDarkMode {
+  color: #bcc4cc;
+}
 .area {
   display: flex;
   flex-direction: column;
@@ -85,6 +91,10 @@
   z-index: 5;
   left: 0;
   bottom: 2.5rem;
+}
+.dropdownDarkMode {
+  background: #2b2d33;
+  color: #bcc4cc;
 }
 .dropdownLabel {
   width: 100%;
@@ -113,7 +123,6 @@
 }
 
 .tableFooter {
-  position: static;
   height: 2rem;
   justify-content: flex-end;
   color: black;
@@ -126,7 +135,6 @@
   padding: 0;
 }
 .tableBody .cell {
-  color: black;
   line-height: 1rem;
   padding: 0.5rem 1rem;
 }
@@ -134,4 +142,9 @@
   margin-bottom: 1rem;
   display: flex;
   justify-content: flex-end;
+}
+.tableFooterDark {
+  height: 2rem;
+  justify-content: flex-end;
+  color: #bcc4cc;
 }

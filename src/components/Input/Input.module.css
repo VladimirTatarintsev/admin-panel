@@ -11,6 +11,7 @@
   box-sizing: border-box;
   border-radius: 4px;
   padding: 8px 4px 8px 8px;
+  background: transparent;
 }
 .field:focus {
   box-shadow: 0 0 5px rgb(0, 0, 0, 0.3);
@@ -69,4 +70,7 @@
   background: #bad8f5;
   color: #000;
   padding: 8px 32px 8px 8px;
+}
+.darkMode {
+  color: #bcc4cc;
 }

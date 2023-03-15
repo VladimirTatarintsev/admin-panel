@@ -6,6 +6,7 @@ import { selectedOrders } from "./selectedOrders";
 import { pagination } from "./pagination";
 import { sorting } from "./sorting";
 import { editOrder } from "./editOrder";
+import { toggleTheme } from "./toggleTheme";
 
 export default combineReducers({
   orderList,
@@ -15,4 +16,5 @@ export default combineReducers({
   pagination,
   sorting,
   editOrder,
+  toggleTheme,
 });
